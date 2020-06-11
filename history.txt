@@ -1,0 +1,346 @@
+    1  ls
+    2  mkdir Dev
+    3  cd dev
+    4  ls
+    5  mkdir.exe MFApp
+    6  ls mfapp
+    7  ls MFApp
+    8  cd mfapp
+    9  dif init
+   10  dit init
+   11  git init
+   12  ls
+   13  code index.html
+   14  git status 
+   15  cd ~/*.ssh
+   16  cd ~/.ssh
+   17  ls
+   18  ssh-keygen.exe -t rsa -b 4096 -C "charopevez@gmail.com"
+   19  cd ~/.ssh
+   20  cd .ssh
+   21   cd .gitconfig 
+   22  cd .ssh
+   23  ls
+   24  ssh-add git_hub_key_rsa
+   25  clip git_hub_key_rsa
+   26  clip git_hub_key_rsa
+   27  git clone git@github.com:charopevez/MFApp.git
+   28  ssh-add git_hub_key_rsa
+   29  eval `ssh-agent -s`
+   30  ssh-add git_hub_key_rsa
+   31  git clone git@github.com:charopevez/MFApp.git
+   32  cd mfa
+   33  cd MFApp
+   34  ls
+   35  fl
+   36  ls
+   37  ls
+   38  git config --global user.name charopevez
+   39  git config --global user.email "charopevez@gmail.com"
+   40  git config --global user.name "charopevez"
+   41  git config --global core.autocrlf true
+   42  git config --global core.safecrlf false
+   43  git config --global core.eol native
+   44  git init
+   45  git add
+   46  git status 
+   47  git add
+   48  git add .
+   49  git commit -m "first commit"
+   50  git push -u origin master
+   51  cd ~MFApp
+   52  cd ..
+   53  cd ..
+   54  cd ?
+   55  cd IdeaProjects/
+   56  cd IdeaProjects/
+   57  ls
+   58  cd mfapp
+   59  ls
+   60  git init
+   61  push
+   62  git clone git@github.com:charopevez/MFApp.git
+   63  cd ..
+   64  git init
+   65  git status 
+   66  git clone git@github.com:charopevez/MFApp.git
+   67  git add .
+   68  git commit
+   69  git commit -m "test"
+   70  push
+   71  git push
+   72  git push -u origin master
+   73  git clone git@github.com:charopevez/MFApp.git
+   74  cd MFApp
+   75  git commit -m "test"
+   76  git init
+   77  git remote add origin git@github.com:charopevez/MFApp.git
+   78  git commit -m "test"
+   79  git add
+   80  git add .
+   81  git commit -m "test"
+   82  git push
+   83  git push -u origin master
+   84  git status 
+   85  git pull
+   86  git status 
+   87  git push
+   88  git push --set-upstream origin master
+   89  git pull
+   90  git branch --set-upstream-to=origin/master 
+   91  git pull
+   92  git push
+   93  git pull
+   94  cd ,,
+   95  cd ..
+   96  git clone git@github.com:charopevez/MFApp.git
+   97  git add .
+   98  git commit -m "test"
+   99  push
+  100  git push
+  101  git remote add origin git@github.com:charopevez/MFApp.git
+  102  git push
+  103  git push -u origin master
+  104  git add .
+  105  git commit -m "test"
+  106  git push
+  107  git push -u origin master
+  108  git push -u origin masters
+  109  git push -u test master
+  110  git push -u origin masters
+  111  git push -u origin masters
+  112  git push -u origin master
+  113  git status 
+  114  git commit -a -m "test"
+  115  git push
+  116  git branch --set-upstream-to=origin/master 
+  117  git fetch 
+  118  git add .
+  119  git push
+  120  git branch --set-upstream-to=origin/master 
+  121  git push
+  122  git pull 
+  123  git clone git@github.com:charopevez/MFApp.git
+  124  add .
+  125  git add .
+  126  commit -m "test"
+  127  git commit -m "test"
+  128  git push
+  129  git reset --hard origin/master
+  130  git push
+  131  git add .
+  132  git commit -m "test"
+  133  git push
+  134  git pull
+  135  ..
+  136  cd
+  137  cd IdeaProjects/
+  138  git pull
+  139  git clone Updates were rejected because the tip of your current branch is behind
+  140  hint: its remote counterpart. Integrate the remote changes (e.g.
+  141  hint: 'git pull ...') before pushing again.
+  142  hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+  143  git clone git@github.com:charopevez/MFApp.git
+  144  ssh-agent.exe -s
+  145  git clone git@github.com:charopevez/MFApp.git
+  146  eval "$(ssh-agent -s)"
+  147  git clone git@github.com:charopevez/MFApp.git
+  148  ssh-add.exe ../
+  149  git clone git@github.com:charopevez/MFApp.git
+  150  ssh-add.exe -k ~/.ssh/git_hub_key_rsa
+  151  git clone git@github.com:charopevez/MFApp.git
+  152  git add .
+  153  git commit -m "retest"
+  154  git push
+  155  git add .
+  156  git commit -m "load"
+  157  git init
+  158  git add .
+  159  git commit -m "load"
+  160  cd MFApp/
+  161  git add .
+  162  git commit -m "test"
+  163  git pull
+  164  cd ..
+  165  git add .
+  166  git clone git@github.com:charopevez/MFApp.git
+  167  git clone git@github.com:charopevez/MFApp.git
+  168  git add .
+  169  git commit -m "test"
+  170  git push
+  171  git reset head --hard
+  172  git reset head --hard
+  173  git push
+  174  git add .
+  175  ..
+  176  cd ..
+  177  cd 2190138/IdeaProjects/
+  178  git remote add origin git@github.com:charopevez/MFApp.git
+  179  git .add
+  180  git add .
+  181  git commit -m first commit
+  182  git commit -m "first commit"
+  183  git init 
+  184  git add .
+  185  git clone git@github.com:charopevez/MFApp.git
+  186  git clone git@github.com:charopevez/MFApp.git
+  187  ssh-agent.exe -
+  188  git clone git@github.com:charopevez/MFApp.git
+  189  eval "$(ssh-agent -s)"
+  190  git clone git@github.com:charopevez/MFApp.git
+  191  ssh-add.exe -k ~/.ssh/git_hub_key_rsa
+  192  git clone git@github.com:charopevez/MFApp.git
+  193  git branch 
+  194  git add .A
+  195  git add .
+  196  git commit -m "first commit"
+  197  gitadd .
+  198  git add .
+  199  git push
+  200  git status MFApp/
+  201  git status MFApp/
+  202  git status 
+  203  git add .
+  204  ls
+  205  cd IdeaProjects/
+  206  git init
+  207  git clone 32d688f30ae71f9aadc609d2bea9a33b22a309a1
+  208  git clone git@github.com:charopevez/MFApp.git
+  209  ssh-add.exe -k ~/.ssh/git_hub_key_rsa
+  210  eval "$(ssh-agent -s)"
+  211  ssh-add.exe -k ~/.ssh/git_hub_key_rsa
+  212  git clone git@github.com:charopevez/MFApp.git
+  213  git add .
+  214  git commit -m "main"
+  215  git push
+  216  git push -u origin master 
+  217  git push  
+  218  git remote add git@github.com:charopevez/MFApp.git
+  219  git remote add origin git@github.com:charopevez/MFApp.git
+  220  git push  
+  221  git push --set-upstream origin master
+  222  git fetch 
+  223  git push  
+  224  git push --set-upstream origin master
+  225  git pull origin 
+  226  git pull origin master 
+  227  git pull origin master 
+  228  git pull origin master 
+  229  git init
+  230  git pull origin master 
+  231  git pull
+  232  git clone failed to push some refs to 'git@github.com:charopevez/MFApp.git'
+  233  git clone git@github.com:charopevez/MFApp.git
+  234  git add
+  235  git add .
+  236  git commit -m "LOAD"
+  237  git push
+  238  git push git@github.com:charopevez/MFApp.git
+  239  git push --set-upstream git@github.com:charopevez/MFApp.git master
+  240  git merge origin master 
+  241  git fetch origin master
+  242  git fetch origin master
+  243  git fetch
+  244  git push --set-upstream git@github.com:charopevez/MFApp.git master
+  245  git fetch
+  246  git merge
+  247  git remote add git@github.com:charopevez/MFApp.git
+  248  git remote add origin git@github.com:charopevez/MFApp.git
+  249  git merge
+  250  git push --set-upstream git@github.com:charopevez/MFApp.git master
+  251  git fetch 
+  252  git push --set-upstream git@github.com:charopevez/MFApp.git master
+  253  git pull
+  254  git pull master
+  255  git pull git@github.com:charopevez/MFApp.git master
+  256  git remote add          Mac Address Table
+  257  ------------------------------------------
+  258  Vlan    Mac Address       Type       Ports
+  259  ----    -----------       ----       -----
+  260     1    346f.9069.4603    DYNAMIC    Fa0/19
+  261     1    b00c.d156.0ed6    DYNAMIC    Fa0/19
+  262     1    b00c.d158.1e9e    DYNAMIC    Fa0/16
+  263  git remote add git@github.com:charopevez/MFAapp.git
+  264  git remote add origin git@github.com:charopevez/MFAapp.git
+  265  git init
+  266  git remote add origin git@github.com:charopevez/MFAapp.git
+  267  git add .
+  268  git commit -m "1.0a"
+  269  push
+  270  git push
+  271  cd MFApp/
+  272  git add .
+  273  git commit -m "1.0a"
+  274  git push
+  275  cd ..
+  276  push
+  277  git push
+  278  git push -u origin master
+  279  git add .
+  280  git commit -m "1.0a_test"
+  281  git push
+  282  e:
+  283  cd e:
+  284  ls
+  285  cd app/
+  286  ls
+  287  ls
+  288  cd trydjango/
+  289  ls
+  290  git init
+  291  git status 
+  292  git add -a
+  293  git add -A
+  294  git commit -m "Django init project"
+  295  git remote add origin https://github.com/charopevez/firstPythonWebApp.git
+  296  git push -u origin master 
+  297  git pull 
+  298   git branch --set-upstream-to=origin/<branch> master
+  299  echo "# FirstPythonWebApp" >> README.md
+  300  git init
+  301  git add README.md
+  302  git commit -m "first commit"
+  303  git remote add origin https://github.com/charopevez/FirstPythonWebApp.git
+  304  git push -u origin master
+  305  git status 
+  306  git log -outline
+  307  git log --outline
+  308  git log 
+  309  git status 
+  310  git status 
+  311  ls
+  312  cd ..
+  313  cd..
+  314  cd ..
+  315  cd xampp/htdocs/52banana/
+  316  git init
+  317  git add .
+  318  git status
+  319  git commit -m "Laravel Project blanc"
+  320  git remote add origin https://github.com/charopevez/WebProject.git
+  321  git remote -v
+  322  git push origin master
+  323  git status 
+  324  git commit -a -m "check server sync"
+  325  git push
+  326  git push --set-upstream origin master
+  327  git status 
+  328  pwd
+  329  e:
+  330  cd e:
+  331  e:/
+  332  pwd
+  333  cd e://
+  334  e://
+  335  cd e://
+  336  pwd
+  337  cd xampp/htdocs/
+  338  ls
+  339  cd 52banana/
+  340  wpd
+  341  ls 
+  342  cat README.md 
+  343  clear
+  344  git 
+  345  git status
+  346  history > history.txt
