@@ -15,7 +15,9 @@ class CreateProductIDSTable extends Migration
     {
         Schema::create('product_i_d_s', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('user');
+            $table->string('password');
+
         });
     }
 

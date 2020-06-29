@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
         return view('welcome');
     });
 
-    Route::get('/search', function () {
-        return view('search');
+    /*Route::get('/search', function () {
+       
+      return view('search');
     });
+    */
+
+    Route::get('/search','DBController@test');
 
     Route::get('/details', function () {
         return view('details');

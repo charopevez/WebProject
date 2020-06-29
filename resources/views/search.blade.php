@@ -81,7 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel-search
+                    <!-- 拡張for文例 -->
+                    @foreach($data as $item)
+                    {{$item->user}}/{{$item->password}}
+                    @endforeach
+                    <!-- 終了 -->
                 </div>
 
                 <div class="links">
