@@ -83,7 +83,11 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
+                <h1>Search</h1>
+                <form action="search" method="post">
+                    <input type="text" name="search">
+                    <button type="submit">Search!</button>
+                </form>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>

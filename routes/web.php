@@ -22,8 +22,7 @@ use Illuminate\Support\Facades\Route;
       return view('search');
     });
     */
-
-    Route::get('/search','DBController@test');
+    Route::post('/search','SearchController@search');
 
     Route::get('/details', function () {
         return view('details');

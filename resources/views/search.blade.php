@@ -81,11 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <!-- 拡張for文例 -->
-                    @foreach($data as $item)
-                    {{$item->user}}/{{$item->password}}
-                    @endforeach
-                    <!-- 終了 -->
+                    {{$data}}
                 </div>
 
                 <div class="links">
