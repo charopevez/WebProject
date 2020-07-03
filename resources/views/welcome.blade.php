@@ -84,7 +84,7 @@
                     Laravel
                 </div>
                 <h1>Search</h1>
-                <form action="{{url('search')}} method="post">
+                <form action="{{route('search')}}" method="post">
                     @csrf
                     <input type="text" name="search">
                     <button type="submit">Search!</button>

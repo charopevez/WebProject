@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
       return view('search');
     });
     */
-    Route::post('/search','SearchController@search');
+    Route::post('/search','SearchController@search')->name('search');
 
     Route::get('/details', function () {
         return view('details');

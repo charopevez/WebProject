@@ -9,6 +9,6 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
     	$data=$request->search;
-        return view('search', compact('data'));
+        return view('/sresult', compact('data'));
     }
 }

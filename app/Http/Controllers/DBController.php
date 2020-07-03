@@ -10,10 +10,4 @@ class DBController extends Controller
 {
     //MySQLController
 
-    //test
-    public function test(){
-    	//データベースに接続し、”select * from ProductID”のキュエリを実行する
-    	$data=ProductID::get();
-        return view('search', compact('data'));
-    }
 }
