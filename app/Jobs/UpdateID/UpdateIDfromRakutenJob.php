@@ -8,7 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class AbstractJob implements ShouldQueue
+class UpdateIDfromRakutenJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -20,7 +20,6 @@ class AbstractJob implements ShouldQueue
     public function __construct()
     {
         //
-        $this->onQueue("Updating ProductID table");
     }
 
     /**
@@ -31,13 +30,5 @@ class AbstractJob implements ShouldQueue
     public function handle()
     {
         //
-        $this->debug("done");
-    }
-
-    protected function debug(String $msg)
-    {
-        $class=static::class;
-        $msg=$msg."{{$class}}";
-        log::info($msg);
     }
 }

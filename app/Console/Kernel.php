@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\UpdateID\UpdateIDMainJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('inspire')->everyMinute();
+         $schedule->job(new UpdateIDMainJob(),'Updating ProductID table')->daily()->between('4:00', '5:00');
     }
 
     /**
