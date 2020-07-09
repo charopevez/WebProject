@@ -13,6 +13,7 @@ class UpdateIDMainJob extends AbstractJob
         //
         $chainMain=[
             new UpdateIDfromAmazonJob(),
+            new UpdateIdGetJanCodeJob(),
             new UpdateIDfromRakutenJob(),
             new UpdateIDfromYahooJob()
         ];

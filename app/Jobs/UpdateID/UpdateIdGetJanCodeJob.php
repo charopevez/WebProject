@@ -2,7 +2,7 @@
 
 namespace App\Jobs\UpdateID;
 
-class UpdateIDfromRakutenJob extends AbstractJob
+class UpdateIdGetJanCodeJob extends AbstractJob
 {
     public function handle()
     {
