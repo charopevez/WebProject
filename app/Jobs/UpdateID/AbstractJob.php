@@ -21,8 +21,7 @@ class AbstractJob implements ShouldQueue
      */
     public function __construct()
     {
-        //
-        $this->onQueue("Updating ProductID table");
+        //$this->onQueue("Updating ProductID table");
     }
 
     /**

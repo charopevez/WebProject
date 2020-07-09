@@ -11,7 +11,7 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
     	$data=$request->search;
-    	$job=new UpdateIDMainJob();
+    	$job=new UpdateIDJob();
     	$this->dispatch($job);
         return view('/sresult', compact('data'));
     }
