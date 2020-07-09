@@ -25,7 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->job(new UpdateIDMainJob(),'Updating ProductID table')->daily()->between('4:00', '5:00');
+         //$schedule->job(new UpdateIDMainJob(),'Updating ProductID table')->daily()->between('4:00', '5:00');
+        $schedule->command('inspire')->everyMinute();
     }
 
     /**
