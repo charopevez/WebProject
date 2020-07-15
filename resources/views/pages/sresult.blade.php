@@ -3,6 +3,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{$data}}
+                    {{$value['price']}} at {{$value['url']}}
                 </div>
+            </div>
     @endsection

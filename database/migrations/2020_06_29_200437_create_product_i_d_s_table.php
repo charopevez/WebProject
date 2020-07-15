@@ -14,14 +14,16 @@ class CreateProductIDSTable extends Migration
     public function up()
     {
         Schema::create('product_i_d_s', function (Blueprint $table) {
-            $table->string('BananaId',10);
-            $table->string('ISBN',13);
+            $table->string('BananaId',10)->primary();
             $table->string('AmazonId',10);
-            $table->mediumInteger('AmazonPrice')->unsigned();
-            $table->string('YahooId');
-            $table->mediumInteger('YahooPrice')->unsigned();
-            $table->string('RakutenId');
-            $table->mediumInteger('RakutenPrice')->unsigned();
+            $table->string('JAN',13)->nullable();
+            $table->string('MakerCodes')->nullable();
+            $table->string('AmazonLink')->nullable();
+            $table->mediumInteger('AmazonPrice')->unsigned()->nullable();
+            $table->string('YahooLink')->nullable();
+            $table->mediumInteger('YahooPrice')->unsigned()->nullable();
+            $table->string('RakutenLink')->nullable();
+            $table->mediumInteger('RakutenPrice')->unsigned()->nullable();
         });
     }
 
