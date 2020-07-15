@@ -12,3 +12,6 @@ npm-debug.log
 yarn-error.log
 /nbproject/private/
 /nbproject
+composer.json
+composer.lock
+.idea

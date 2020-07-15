@@ -13,7 +13,7 @@ class AddCategoryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'Amazon:categoryTree {categoryId} {categoryName=ディフォルト}';
+    protected $signature = 'Amazon:categoryTree {categoryId} {categoryName=-1}';
 
     /**
      * The console command description.
@@ -51,7 +51,7 @@ class AddCategoryCommand extends Command
             "CategoryId"=>$this->argument('categoryId'),
             "CategoryName"=>$this->argument('categoryName')
         ]);
-        Log::warning('Parent category '.$category->categoryName.'with id='.$category->CategoryId.' was added to dbphp art   ');
+        Log::warning('Parent category '.$category->categoryName.'with id='.$category->CategoryId.' was added to db');
     }
     }
 }
