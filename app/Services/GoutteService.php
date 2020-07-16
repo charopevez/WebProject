@@ -4,7 +4,6 @@ namespace App\Services;
 
 use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
-use phpDocumentor\Reflection\Types\Self_;
 
 
 class GoutteService{

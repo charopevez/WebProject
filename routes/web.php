@@ -22,5 +22,9 @@ use Illuminate\Support\Facades\Route;
         return view('details');
     });
 
+    //admin
+    Route::get('/admin', 'AdminController@console');
+
+
 
 

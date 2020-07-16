@@ -3,8 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Category;
+use App\Services\GoutteService;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
+
 
 class AddCategoryCommand extends Command
 {
@@ -13,7 +14,7 @@ class AddCategoryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'Amazon:categoryTree {categoryId} {categoryName=-1}';
+    protected $signature = 'Amazon:categoryTree {categoryId} {AmazonCategoryNode} {categoryName=-1} ';
 
     /**
      * The console command description.
@@ -21,8 +22,9 @@ class AddCategoryCommand extends Command
      * @var string
      */
     protected $description = 'Search Amazon for child categories, while adding it to DB
-                               {CategoryId: Id of caregory you want to analize}
-                               {CategoryName: (Optional) Create new parent category with name }';
+                               {CategoryId}: Id of caregory you want to analize
+                               {AmazonCategoryNode}:Amazons CategoryId
+                               {CategoryName}: (Optional) Create new parent category with name';
 
     /**
      * Create a new command instance.
@@ -40,18 +42,42 @@ class AddCategoryCommand extends Command
      * @return int
      */
     public function handle()
-    {   if ($this->argument( 'categoryName')==-1){
-        //take CategoryName from "category" table by ID
-        $category="test";
-        Log::warning('Searching throw existing category "'.$category.'"');
-    }
-    else {
-        //add new record to Category Table
-        $category=Category::create([
-            "CategoryId"=>$this->argument('categoryId'),
-            "CategoryName"=>$this->argument('categoryName')
-        ]);
-        Log::warning('Parent category '.$category->categoryName.'with id='.$category->CategoryId.' was added to db');
-    }
+    {
+        $gService = new GoutteService();
+        $categoriesList=array(
+            0=>array("CategoryId"=>$this->argument('categoryId'),
+                    "CategoryName"=>$this->argument('categoryName'),
+                    "AmazonCategoryNode"=>$this->argument('AmazonCategoryNode')));
+
+        //add Parent Category
+        if (Category::createCategory($categoriesList[0])==0) $this->info("カテゴリ　".$categoriesList[0]['CategoryName']."追加しました。");
+           else {
+               $this->info("カテゴリ　" . $categoriesList[0]['CategoryName'] . "追加出来ませんでした。　終了します");
+               exit(1);
+           }
+           /*if ($categoriesList[0]['CategoryId'] % 100!=0) $parentLevel=2;
+           else if ($categoriesList[0]['CategoryId'] % 10000!=0) $parentLevel=1;
+           else $parentLevel=0;*/
+
+           //get child list
+        $child=$gService->getChildGategoriesFromAmazon($categoriesList[0]['CategoryId'], $categoriesList[0]['AmazonCategoryNode'], 0);
+        dd ($child);
+        /*if (!empty($categoriesList[0]['CategoryId'])) {
+            if ($this->argument('categoryName') == -1) {
+                $this->info("child");
+
+                //take Categorynode from "category" table by ID
+
+            } else {
+
+                if (!empty($this->argument('AmazonCategoryNode'))) {
+                    $this->info($this->argument('categoryId'));
+                    $this->info($this->argument('categoryId'). $this->argument('categoryName').$this->argument('AmazonCategoryNode'));
+
+                    //add new record to Category Table
+                    Category::createCategory($this->argument('categoryId'), $this->argument('categoryName'), $this->argument('AmazonCategoryNode'));
+                    }
+            }
+        }*/
     }
 }

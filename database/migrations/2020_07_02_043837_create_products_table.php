@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
                                                 ->on('product_i_d_s')
                                                 ->onDelete('cascade')
                                                 ->onUpdate('cascade');
-            $table->smallInteger('CategoryId');
+            $table->Integer('CategoryId');
             $table->foreign('CategoryId')->references('CategoryId')
                                                 ->on('categories');
             $table->string('Maker');
