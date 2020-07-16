@@ -126,7 +126,7 @@ class GoutteService{
             //get link
             $categoryNode=$node->filter('a')->attr('href');
             //get id from link
-            $categoryNode=substr($categoryNode,strpos($categoryNode,'=')+1);
+            $categoryNode=substr($categoryNode,strpos($categoryNode,'node=')+5);
             $categoryNode=substr($categoryNode, 0, strpos($categoryNode,'&'));
             //generate Category ID
             $categoryId=$id+($increment+1)*pow(10,4-2*$parentLevel);
