@@ -19,7 +19,7 @@ class Category extends Model
         'AmazonCategoryNode',
         'RakutenCategoryNode',
         'YahooCategoryNode'];
-    //
+    //add Category to DB
     public static function createCategory($array)
     {
         try {DB::table('categories')->insert($array);
@@ -28,4 +28,12 @@ class Category extends Model
             return -1;
         }
     }
+
+    //get $parent category and its children
+    public static function getCategoryList($parentId)
+    {    //get array of categoriesID
+         return DB::table('categories')->whereBetween('CategoryId', [$parentId, $parentId+1000000])
+             ->select('CategoryId', 'AmazonCategoryNode')->get()->toArray();
+    }
+
 }

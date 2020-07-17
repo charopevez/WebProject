@@ -53,15 +53,25 @@ class AddCategoryCommand extends Command
         if (Category::createCategory($categoriesList[0])==0) $this->info("カテゴリ　".$categoriesList[0]['CategoryName']."追加しました。");
            else {
                $this->info("カテゴリ　" . $categoriesList[0]['CategoryName'] . "追加出来ませんでした。　終了します");
-               exit(1);
-           }
-           /*if ($categoriesList[0]['CategoryId'] % 100!=0) $parentLevel=2;
-           else if ($categoriesList[0]['CategoryId'] % 10000!=0) $parentLevel=1;
-           else $parentLevel=0;*/
-
+               }
+        $categoryLevel=0;
+        //creating categories tree
+        while ($categoryLevel<4) {
+            $childCategoriesList=Category::getCategoryList($this->argument('categoryId'));
+            // Getting all childs for existing categories
+            foreach ($childCategoriesList as $category) {
+                //checking what categories level we are investigating
+                if(($category->CategoryId)%pow(10, 8-$categoryLevel*2)!=0) {
+                    //childs array
+                    $childs=$gService->getChildGategoriesFromAmazon($category->CategoryId, $category->AmazonCategoryNode, $categoryLevel);
+                    Category::createCategory($childs);
+                }
+            }
+            $categoryLevel++;
+        }
            //get child list
-        $child=$gService->getChildGategoriesFromAmazon($categoriesList[0]['CategoryId'], $categoriesList[0]['AmazonCategoryNode'], 0);
-        dd ($child);
+        //$child=$gService->getChildGategoriesFromAmazon($categoriesList[0]['CategoryId'], $categoriesList[0]['AmazonCategoryNode'], 0);
+        //dd ($child);
         /*if (!empty($categoriesList[0]['CategoryId'])) {
             if ($this->argument('categoryName') == -1) {
                 $this->info("child");

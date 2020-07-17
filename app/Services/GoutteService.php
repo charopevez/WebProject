@@ -103,8 +103,7 @@ class GoutteService{
 
     public static function getChildGategoriesFromAmazon( $id, $node, $parentLevel)
     {
-        if ($parentLevel>2) exit(1);
-        $parentLevel++;
+        if ($parentLevel>3) exit(1);
         //prepare url
         $uriTemplate="https://www.amazon.co.jp/b?node=%s";
         $uri=sprintf($uriTemplate,$node);
