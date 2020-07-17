@@ -129,7 +129,7 @@ class GoutteService{
             $categoryNode=substr($categoryNode,strpos($categoryNode,'node=')+5);
             $categoryNode=substr($categoryNode, 0, strpos($categoryNode,'&'));
             //generate Category ID
-            $categoryId=$id+($increment+1)*pow(10,4-2*$parentLevel);
+            $categoryId=$id+($increment+1)*pow(10,6-2*$parentLevel);
             return array("CategoryId"=>$categoryId,"AmazonCategoryNode"=>$categoryNode, "CategoryName"=>$categoryName);
         });
 
