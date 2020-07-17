@@ -15,9 +15,9 @@ class SearchController extends Controller
 
     //商品検索
     function search(Request $request){
-    	//$data=$request->search;
-    	$value=$this->goutteService->getChildGategoriesFromAmazon(1000000,"2127209051",0);
-    	dd($value);
-        //return view('pages.sresult', compact('value'));
+        $data=$request->search;
+    	//$value=$this->goutteService->getChildGategoriesFromAmazon(1000000,"2127209051",0);
+    	//dd($value);
+        return view('pages.sresult', compact('data'));
     }
 }
