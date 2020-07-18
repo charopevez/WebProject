@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 
     //admin
     Route::get('/admin', 'AdminController@console');
+    Route::get('/custom', function () {
+        return view('customPages.custom');
+        });
 
 
 

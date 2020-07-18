@@ -10,7 +10,7 @@
         <em>Search everything you want!</em>
       </h3>
       <br>
-      
+
       <!-- Search Area Starts -->
       <div class="search-area">
         <div class="search-bg">
@@ -30,8 +30,9 @@
     <!-- Search Area End -->
 
     </div>
+
     <div class="overlay"></div>
   </header>
 
     @endsection
-                
+
