@@ -1,7 +1,7 @@
 /*Search Suggestion function*/
 $(document).ready(function(){
 
-    $('#autocomplete').on('keyup',function(){
+    $('.search-bar').on('keyup',function(){
         var query = $(this).val();
         if(query != '')
         {
@@ -11,16 +11,16 @@ $(document).ready(function(){
                 method:"POST",
                 data:{search:query, _token:_token},
                 success:function(data){
-                    $('#itemname').fadeIn();
-                    $('#itemname').html(data);
+                    $('#search-suggestion').fadeIn();
+                    $('#search-suggestion').html(data);
                 }
             });
         }
     });
 
     $(document).on('click', 'li', function(){
-        $('#itemname').val($(this).text());
-        $('#itemname').fadeOut();
+        $('#search-suggestion').val($(this).text());
+        $('#search-suggestion').fadeOut();
     });
 
 });
