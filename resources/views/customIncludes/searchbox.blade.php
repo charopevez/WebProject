@@ -1,15 +1,24 @@
-<div class='search-block'>
-    <div class='search_bar'>
-        <form action="{{route('search')}}" method="post">
+<form action="{{route('search')}}" method="post">
+    <div class='search_block'>
+        <div class='search_bar'>
             @csrf
-            <input id='searchOne' type='checkbox'>
-            <label for='searchOne'>
+            <input class="search_btn" type='checkbox' id="search_btn">
+            <label for='search_btn'>
                 <i class='fa fa-search'></i>
                 <i class='last icon fa fa-times'></i>
                 <p>|</p>
             </label>
-            <input class="search-bar" type="text" name="search" autocomplete="off" placeholder="Search Keyword">
-        </form>
+            <input class="search_input" type="text" name="search" autocomplete="off" placeholder="Search Keyword"
+                   id="autocomplete">
+        </div>
+         <div class="search_settings">
+             <input class="search_option" type='checkbox' id="search_amazon">
+             <label for='search_amazon'>Amazon</label>
+             <input class="search_option" type='checkbox' id="search_rakuten">
+             <label for='search_rakuten'>Rakuten</label>
+             <input class="search_option" type='checkbox' id="search_yahoo">
+             <label for='search_yahoo'>Yahoo</label>
+         </div>
+         <div class="search_suggestion"></div>
     </div>
-    <div id="search-suggestion"></div>
-</div>
+</form>

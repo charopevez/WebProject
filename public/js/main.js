@@ -95,7 +95,7 @@
 
 /*Search Suggestion function*/
 $(document).ready(function () {
-  $('#autocomplete').on('keyup', function () {
+  $('.search_input').on('keyup', function () {
     var query = $(this).val();
 
     if (query != '') {
@@ -109,15 +109,15 @@ $(document).ready(function () {
           _token: _token
         },
         success: function success(data) {
-          $('#itemname').fadeIn();
-          $('#itemname').html(data);
+          $('.search_suggestion').fadeIn();
+          $('.search_suggestion').html(data);
         }
       });
     }
   });
   $(document).on('click', 'li', function () {
-    $('#itemname').val($(this).text());
-    $('#itemname').fadeOut();
+    $('.search_suggestion').val($(this).text());
+    $('.search_suggestion').fadeOut();
   });
 });
 'use strict';

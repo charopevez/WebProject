@@ -6,7 +6,7 @@
 <body>
     @include('customIncludes.menu')
     @include('customIncludes.searchbox')
-@yield('content')
+    @yield('content')
 {{--@include('customIncludes.footer')--}}
 </body>
 </html>
