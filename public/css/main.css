@@ -20,10 +20,23 @@ body .search_block {
   float: left;
   width: 100%;
   position: relative;
-
 }
 
-    body .search_bar {
+body .search_suggestion {
+  width: 15px;
+  background: transparent;
+  transition: border 0.3s 0s, width 0.2s 0.3s cubic-bezier(0.225, 0.01, 0.475, 1.01), text-indent 0.2s 0.3s;
+  padding: 20px;
+  border-color: #337c04;
+  text-indent: 30px;
+  outline: none;
+  font-size: 1.2em;
+  color: #0a3304;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+}
+
+body .search_bar {
   left: 0;
   right: 0;
   top: 50%;
@@ -40,11 +53,12 @@ body .search_bar input[type=text] {
   background: transparent;
   transition: border 0.3s 0s, width 0.2s 0.3s cubic-bezier(0.225, 0.01, 0.475, 1.01), text-indent 0.2s 0.3s;
   padding: 20px;
+  border-color: #337c04;
   text-indent: 30px;
   outline: none;
   border: 0px solid #337c04;
   font-size: 1.2em;
-  color: #A8A952;
+  color: #0a3304;
   border-radius: 5px;
   font-family: "Nunito", sans-serif;
 }

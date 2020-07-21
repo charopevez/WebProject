@@ -11,7 +11,7 @@ class UpdateIDfromAmazonJob extends AbstractJob
         //仕事開始をローグに登録
         $this->debug("start");
 
-        ProductID::updateYahooData("11111",$this->goutteService->searchYahooByJan(619659169299));
+        //ProductID::updateYahooData("11111",$this->goutteService->searchYahooByJan(619659169299));
 
         //仕事終了をローグに登録
         $this->debug("finish");

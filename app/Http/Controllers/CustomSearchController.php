@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdateID\UpdateIDMainJob;
 use App\Product;
+use App\ProductID;
 use Illuminate\Http\Request;
 
 class CustomSearchController extends Controller
@@ -10,6 +12,7 @@ class CustomSearchController extends Controller
     //
     public function search()
     {
+        UpdateIDMainJob::dispatch();
         return view('customPages.custom');
     }
 

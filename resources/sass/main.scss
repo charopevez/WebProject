@@ -27,14 +27,27 @@ body {
         position: relative;
     }
 
+    .search_suggestion {
+        width: 15px;
+        background: transparent;
+        transition: border .3s 0s, width .2s .3s cubic-bezier(0.225, 0.010, 0.475, 1.010), text-indent .2s .3s;
+        padding: 20px;
+        border-color: #337c04;
+        text-indent: 30px;
+        outline: none;
+        font-size: 1.2em;
+        color: #0a3304;
+        border-radius: 5px;
+        //text-transform:uppercase;
+        font-family: 'Nunito', sans-serif;
+    }
+
+
     .search_bar {
-        position: absolute;
         left: 0;
         right: 0;
-        margin: auto;
         top: 50%;
         transform: translateY(-50%);
-        width: 100%;
         text-align: center;
         overflow: hidden;
         width: 280px;
@@ -51,7 +64,7 @@ body {
             outline: none;
             border: 0px solid #337c04;
             font-size: 1.2em;
-            color: #A8A952;
+            color: #0a3304;
             border-radius: 5px;
             //text-transform:uppercase;
             font-family: 'Nunito', sans-serif;
