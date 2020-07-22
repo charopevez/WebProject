@@ -68,7 +68,6 @@ class AddCategoryCommand extends Command
                 }
             }
             $categoryLevel++;
-            Log::info($categoryLevel);
         }
     }
 }
