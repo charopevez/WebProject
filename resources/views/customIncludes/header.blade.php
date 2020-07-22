@@ -12,7 +12,9 @@
 <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" type="text/css">
 <!-- App Css and JS -->
 <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/sandBox.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
 <!-- favicon -->
 <link rel="icon" href="{{ asset('/img/favicon.png') }}" type="image/gif" sizes="16x16">
 

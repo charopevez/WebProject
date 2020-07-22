@@ -2,14 +2,13 @@
     <div class='search_block'>
         <div class='search_bar'>
             @csrf
-            <input class="search_btn" type='checkbox' id="search_btn">
+            <input type='checkbox' id="search_btn">
             <label for='search_btn'>
                 <i class='fa fa-search'></i>
                 <i class='last icon fa fa-times'></i>
                 <p>|</p>
             </label>
-            <input class="search_input" type="text" name="search" autocomplete="off" placeholder="Search Keyword"
-                   id="autocomplete">
+            <input type="text" name="search" autocomplete="off" placeholder="Search Keyword" id="search_input">
         </div>
          <div class="search_settings">
              <input class="search_option" type='checkbox' id="search_amazon">

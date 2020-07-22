@@ -56,38 +56,19 @@ class AddCategoryCommand extends Command
                }
         $categoryLevel=0;
         //creating categories tree
-        while ($categoryLevel<4) {
+        while ($categoryLevel<5) {
             $childCategoriesList=Category::getCategoryList($this->argument('categoryId'));
             // Getting all childs for existing categories
             foreach ($childCategoriesList as $category) {
                 //checking what categories level we are investigating
-                if(($category->CategoryId)%pow(10, 8-$categoryLevel*2)!=0) {
+                if(($category->CategoryId)%pow(10, 10-$categoryLevel*2)!=0) {
                     //childs array
-                    $childs=$gService->getChildGategoriesFromAmazon($category->CategoryId, $category->AmazonCategoryNode, $categoryLevel);
+                    $childs=$gService->getChildGategoriesFromAmazon($category->CategoryId, $category->AmazonCategoryNode, $categoryLevel+1);
                     Category::createCategory($childs);
                 }
             }
             $categoryLevel++;
+            Log::info($categoryLevel);
         }
-           //get child list
-        //$child=$gService->getChildGategoriesFromAmazon($categoriesList[0]['CategoryId'], $categoriesList[0]['AmazonCategoryNode'], 0);
-        //dd ($child);
-        /*if (!empty($categoriesList[0]['CategoryId'])) {
-            if ($this->argument('categoryName') == -1) {
-                $this->info("child");
-
-                //take Categorynode from "category" table by ID
-
-            } else {
-
-                if (!empty($this->argument('AmazonCategoryNode'))) {
-                    $this->info($this->argument('categoryId'));
-                    $this->info($this->argument('categoryId'). $this->argument('categoryName').$this->argument('AmazonCategoryNode'));
-
-                    //add new record to Category Table
-                    Category::createCategory($this->argument('categoryId'), $this->argument('categoryName'), $this->argument('AmazonCategoryNode'));
-                    }
-            }
-        }*/
     }
 }

@@ -4,6 +4,12 @@ namespace App\Jobs\UpdateID;
 
 class UpdateIDMainJob extends AbstractJob
 {
+    protected $categories;
+
+    public function __construct($categoryId)
+    {
+
+    }
 
     public function handle()
     {
