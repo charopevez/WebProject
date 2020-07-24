@@ -17,7 +17,6 @@ class CreateProductIDSTable extends Migration
             $table->string('BananaId',10)->primary();
             $table->string('AmazonId',10);
             $table->string('JAN',13)->nullable();
-            $table->string('MakerCodes')->nullable();
             $table->string('AmazonLink')->nullable();
             $table->mediumInteger('AmazonPrice')->unsigned()->nullable();
             $table->string('YahooLink')->nullable();

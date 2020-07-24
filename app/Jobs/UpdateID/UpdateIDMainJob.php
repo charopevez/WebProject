@@ -2,13 +2,16 @@
 
 namespace App\Jobs\UpdateID;
 
+use App\Category;
+
 class UpdateIDMainJob extends AbstractJob
 {
     protected $categories;
 
     public function __construct($categoryId)
     {
-
+        parent::__construct();
+        $this->categories=Category::getCategoryChildrenList($categoryId);
     }
 
     public function handle()
@@ -18,7 +21,7 @@ class UpdateIDMainJob extends AbstractJob
 
         //
         $chainMain=[
-            new UpdateIDfromAmazonJob(),
+            new UpdateIDfromAmazonJob($this->categories),
             new UpdateIdGetJanCodeJob(),
             new UpdateIDfromRakutenJob(),
             new UpdateIDfromYahooJob()

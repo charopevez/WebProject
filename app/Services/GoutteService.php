@@ -63,7 +63,7 @@ class GoutteService{
         return array('RakutenLink'=>$link,'RakutenPrice'=>$price);
     }
 
-    public function searchProductFromAmazonByCategory($node)
+    public static function searchProductFromAmazonByCategory($node)
     {   //https://www.amazon.co.jp/s?rh=i:computers,n:3482011&bbn=3481981    3481981
         //prepare url
         $uriTemplate="https://www.amazon.co.jp/b?node=%s";
@@ -87,15 +87,16 @@ class GoutteService{
             $link=null;$price=null;$name=null;
             if (!empty($asin)){
                 //get name
-                $name=$node->filter('h2')->text();
+                //$name=$node->filter('h2')->text();
                 //get link
-                $link="https://www.amazon.co.jp/dp/".$asin;
+                //$link="https://www.amazon.co.jp/dp/".$asin;
                 //get price without ","
                 $price=str_replace(",","",
                     $node->filter('.s-price')->text());
                 //get price without "￥"
                 $price=str_replace("￥ ","", $price);
-                return array("asin"=>$asin, "name"=>$name,"link"=>$link,"price"=>$price);
+                //return array("AmazonId"=>$asin,"AmazonLink"=>$link,"AmazonPrice"=>$price);
+                return array("AmazonId"=>$asin,"AmazonPrice"=>$price);
             }
         });
         return array_values(array_filter($result));

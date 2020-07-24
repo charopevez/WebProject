@@ -32,11 +32,12 @@ class Category extends Model
     public static function getCategoryChildrenList($parentId){
         //calculate category lvl
         $categoryLvL =4;
-        while (false){
-
+        $tempID=$parentId;
+        while ($tempID%100==0){
+            $categoryLvL--;
+            $tempID/=100;
         }
-
-        return DB::table('categories')->where()->
+        return DB::table('categories')->whereBetween('CategoryId', [$parentId, $parentId+pow(10, 10-$categoryLvL*2)])->
                 select('CategoryId', 'AmazonCategoryNode')->get()->toArray();
     }
 

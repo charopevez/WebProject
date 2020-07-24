@@ -22,9 +22,9 @@ class CreateProductsTable extends Migration
             $table->Integer('CategoryId');
             $table->foreign('CategoryId')->references('CategoryId')
                                                 ->on('categories');
-            $table->string('Maker');
+            $table->string('Maker')->nullable();
             $table->string('MakerCode')->nullable();
-            $table->string('ItemName');
+            $table->string('ItemName')->nullable();
             $table->string('color',10);
         });
     }
