@@ -32,7 +32,7 @@ class ProductID extends Model
     public static function updateAmazonData($asin, $price)
     {
         DB::table("product_i_d_s")->where('AmazonId',$asin)
-            ->update($price);
+            ->update(['AmazonPrice'=>$price]);
     }
 
 
@@ -43,7 +43,7 @@ class ProductID extends Model
             return DB::table('product_i_d_s')->max('BananaID')+1;
         }else{
             //if exists return true
-            return true;
+            return -1;
         }
     }
 

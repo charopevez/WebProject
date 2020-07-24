@@ -33,15 +33,15 @@ class UpdateIDfromAmazonJob extends AbstractJob
             // for each product
             foreach ($productList as $product){
                 //checking if product exist in DB, if get true, upadete data, else adding data to generated ID
-                $bananaID=ProductID::getBananaId($product->AmazonId);
-                if ($bananaID) {
+                $bananaID=ProductID::getBananaId($product['AmazonId']);
+                if ($bananaID==-1) {
                     //if exist update info
-                    ProductID::updateAmazonData($product->AmazonId, $product->AmazonPrice);
+                    ProductID::updateAmazonData($product['AmazonId'], $product['AmazonPrice']);
                     //increase update counter
                     $updateCount++;
                 } else {
                     //else add to Products table record
-                    ProductID::insertAmazonData($bananaID,$product->AmazonId, $product->AmazonPrice);
+                    ProductID::insertAmazonData($bananaID,$product['AmazonId'], $product['AmazonPrice']);
                     //increase update counter
                     $addCount++;
                 }
