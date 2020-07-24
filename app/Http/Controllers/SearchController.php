@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\UpdateID\UpdateIDfromAmazonJob;
 
 use App\Jobs\UpdateID\UpdateIDMainJob;
+use App\Services\GoutteService;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -17,7 +18,7 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $data=$request->search;
-        $this->dispatchNow(new UpdateIDMainJob($data));
+        dd(GoutteService::searchProductFromAmazonByCategory($data));
 
         //return view('pages.sresult', compact('data'));
     }

@@ -86,16 +86,15 @@ class GoutteService{
             $asin=$node->attr('data-asin');
             $link=null;$price=null;$name=null;
             if (!empty($asin)){
-                try {
-                    //get price without ","
-                    $price=str_replace(",","",
-                        $node->filter('.s-price')->text());
-                    //get price without "￥"
-                    $price=str_replace("￥ ","", $price);
-                    //return array("AmazonId"=>$asin,"AmazonLink"=>$link,"AmazonPrice"=>$price);
-                    return array("AmazonId"=>$asin,"AmazonPrice"=>$price);
-                } catch (Exception $e){}
-
+                //get link
+                //$link="https://www.amazon.co.jp/dp/".$asin;
+                //get price without ","
+                $price=str_replace(",","",
+                    $node->filter('.s-price')->text());
+                //get price without "￥"
+                $price=str_replace("￥ ","", $price);
+                //return array("AmazonId"=>$asin,"AmazonLink"=>$link,"AmazonPrice"=>$price);
+                return array("AmazonId"=>$asin,"AmazonPrice"=>$price);
             }
         });
         return array_values(array_filter($result));
