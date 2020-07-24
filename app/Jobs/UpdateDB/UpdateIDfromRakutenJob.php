@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Jobs\UpdateID;
+namespace App\Jobs\UpdateDB;
 
-
-class UpdateIDfromYahooJob extends AbstractJob
+class UpdateIDfromRakutenJob extends AbstractJob
 {
     public function handle()
     {
@@ -15,4 +14,3 @@ class UpdateIDfromYahooJob extends AbstractJob
         $this->debug("finish");
     }
 }
-

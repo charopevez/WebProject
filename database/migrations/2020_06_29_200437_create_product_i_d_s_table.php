@@ -15,7 +15,7 @@ class CreateProductIDSTable extends Migration
     {
         if (!Schema::hasTable('product_i_d_s')) {
             Schema::create('product_i_d_s', function (Blueprint $table) {
-                $table->bigInteger('BananaId', 10)->unsigned()->primary();
+                $table->bigInteger('BananaId', 10)->unsigned();
                 $table->string('AmazonId', 10);
                 $table->string('JAN', 13)->nullable();
                 $table->string('AmazonLink')->nullable();
@@ -24,6 +24,7 @@ class CreateProductIDSTable extends Migration
                 $table->mediumInteger('YahooPrice')->unsigned()->nullable();
                 $table->string('RakutenLink')->nullable();
                 $table->mediumInteger('RakutenPrice')->unsigned()->nullable();
+                $table->unique(['BananaId','AmazonId']);
             });
         }
     }

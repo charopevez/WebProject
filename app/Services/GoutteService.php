@@ -97,6 +97,8 @@ class GoutteService{
                     $price=str_replace(",","", $rawPrice);
                     //get price without "￥"
                     $price=str_replace("￥ ","", $price);
+                    //if its a price range, set it to min
+                    $price=explode(" ", $price)[0];
                     return array("AmazonId"=>$asin,"AmazonPrice"=>$price);
                 } catch (\Exception $e) {}
             }

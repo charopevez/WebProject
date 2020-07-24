@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\UpdateID;
+namespace App\Jobs\UpdateDB;
 
 use App\Category;
 
@@ -19,19 +19,25 @@ class UpdateIDMainJob extends AbstractJob
         //仕事開始をローグに登録
         $this->debug("start");
 
-        //
+        //updating Products List
         $chainMain=[
             new UpdateIDfromAmazonJob($this->categories),
-            new UpdateIdGetJanCodeJob(),
-            new UpdateIDfromRakutenJob(),
-            new UpdateIDfromYahooJob()
-        ];
+                    ];
 
+        //updating Product info
+        $chainBranch=[
+            new GetLotInfo(),
+            new UpdateIdGetJanCodeJob(),
+            ];
+
+        //getting price from another sources
         $chainLast=[
+            new UpdateIDfromRakutenJob(),
+            new UpdateIDfromYahooJob(),
             new UpdateIDUpdateDatabaseJob()
         ];
 
-        $chain=array_merge($chainMain,$chainLast);
+        $chain=array_merge($chainMain, $chainBranch ,$chainLast);
 
         UpdateIDJob::withChain($chain)->dispatch();
 

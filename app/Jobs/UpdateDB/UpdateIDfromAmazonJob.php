@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Jobs\UpdateID;
+namespace App\Jobs\UpdateDB;
 
-use App\Category;
-use App\Product;
 use App\ProductID;
 use App\Services\GoutteService;
 
