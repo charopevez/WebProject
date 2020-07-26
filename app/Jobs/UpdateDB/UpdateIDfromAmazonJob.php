@@ -2,6 +2,7 @@
 
 namespace App\Jobs\UpdateDB;
 
+use App\Product;
 use App\ProductID;
 use App\Services\GoutteService;
 
@@ -40,6 +41,7 @@ class UpdateIDfromAmazonJob extends AbstractJob
                 } else {
                     //else add to Products table record
                     ProductID::insertAmazonData($bananaID,$product['AmazonId'], $product['AmazonPrice']);
+                    Product::AddNewItem($bananaID, $category->CategryId);
                     //increase update counter
                     $addCount++;
                 }

@@ -18,5 +18,13 @@ class Product extends Model
         DB::table('products')->where('CategoryId', $CategoryId)
             ->select('BananaId')->get()->toArray();
     }
+
+    public static function AddNewItem(int $bananaID, int $categoryId)
+    {
+        DB::table('products')->insert([
+            'BananaId'=>$bananaID,
+            'CategoryId'=>$categoryId
+        ]);
+    }
 }
 
