@@ -8,6 +8,22 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class GoutteService{
 
+
+    //Take itemi ifo from Amazon
+    public static function getItemData($asin)
+    {
+        //prepare url
+        $uri="https://amazon.co.jp/dp/".$asin;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout'=>60,
+        ));
+        $goutteClient->setClient($guzzleClient);
+        $itemPage=$goutteClient->request('get',$uri);     //get page
+
+        return $itemPage;
+    }
+
     public function searchYahooByJan($jan)
     {
         //prepare url
@@ -139,5 +155,7 @@ class GoutteService{
 
         return  $result;
     }
+
+
 
 }

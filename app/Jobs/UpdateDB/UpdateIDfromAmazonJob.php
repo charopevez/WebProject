@@ -41,7 +41,7 @@ class UpdateIDfromAmazonJob extends AbstractJob
                 } else {
                     //else add to Products table record
                     ProductID::insertAmazonData($bananaID,$product['AmazonId'], $product['AmazonPrice']);
-                    Product::AddNewItem($bananaID, $category->CategryId);
+                    Product::AddNewItem($bananaID, $category->CategoryId);
                     //increase update counter
                     $addCount++;
                 }

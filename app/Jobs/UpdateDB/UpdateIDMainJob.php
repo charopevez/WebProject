@@ -26,7 +26,7 @@ class UpdateIDMainJob extends AbstractJob
 
         //updating Product info
         $chainBranch=[
-            new GetLotInfo(),
+            new GetLotInfoJob(),
             new UpdateIdGetJanCodeJob(),
             ];
 

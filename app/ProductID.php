@@ -16,12 +16,12 @@ class ProductID extends Model
 
     public static function getBananaIdAndAsin($category)
     {
-        return DB::table("product_i_d_s")->where('Ca',$category)->pluck('AmazonId', 'BananaId');
+        return DB::table('product_i_d_s')->where('Ca',$category)->pluck('AmazonId', 'BananaId');
     }
 
     public static function insertAmazonData($bananaId, $asin, $price )
     {
-        DB::table("product_i_d_s")->insert([
+        DB::table('product_i_d_s')->insert([
             'BananaId'=>$bananaId,
             'AmazonId'=>$asin,
             'AmazonLink'=>"https://www.amazon.co.jp/dp/".$asin,
@@ -31,7 +31,7 @@ class ProductID extends Model
 
     public static function updateAmazonData($asin, $price)
     {
-        DB::table("product_i_d_s")->where('AmazonId',$asin)
+        DB::table('product_i_d_s')->where('AmazonId',$asin)
             ->update(['AmazonPrice'=>$price]);
     }
 

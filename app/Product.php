@@ -19,11 +19,34 @@ class Product extends Model
             ->select('BananaId')->get()->toArray();
     }
 
+
+    //Add new Items
     public static function AddNewItem(int $bananaID, int $categoryId)
     {
         DB::table('products')->insert([
             'BananaId'=>$bananaID,
             'CategoryId'=>$categoryId
+        ]);
+    }
+
+
+    //return items without name
+    public static function GetNewItemsID()
+    {
+
+        return  DB::table('products')
+                        ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
+                        ->select(['products.BananaId','product_i_d_s.AmazonId'])
+                        ->whereNull('products.ItemName')->get()->toArray();
+
+    }
+
+    //update Item info
+    public static function updateLotInfo(int $bananaID, $data)
+    {
+        DB::table('products')->insert([
+            'BananaId'=>$bananaID,
+            'ItemName'>$data
         ]);
     }
 }

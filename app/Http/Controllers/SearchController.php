@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdateDB\GetLotInfo;
+use App\Jobs\UpdateDB\GetLotInfoJob;
 use App\Jobs\UpdateID\UpdateIDfromAmazonJob;
 
 use App\Jobs\UpdateID\UpdateIDMainJob;
@@ -18,7 +20,7 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $data=$request->search;
-        dd(GoutteService::searchProductFromAmazonByCategory($data));
+        GetLotInfoJob:: dispatchNow();
 
         //return view('pages.sresult', compact('data'));
     }
