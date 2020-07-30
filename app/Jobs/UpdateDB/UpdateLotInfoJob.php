@@ -5,6 +5,7 @@ namespace App\Jobs\UpdateDB;
 
 
 
+use App\Product;
 use App\Services\GoutteService;
 
 class UpdateLotInfoJob extends AbstractJob
@@ -28,9 +29,10 @@ class UpdateLotInfoJob extends AbstractJob
 
         //get New Item list
             $asin=$this->lot->AmazonId;
-            $data=GoutteService::getItemData($asin);
-            //Product::updateLotInfo($item->BananaId,$data);
-            $this->debug("Added ". $asin);
+
+        $date=GoutteService::getItemData($this->item->AmazonId);
+        Product::updateLotInfo($this->item->BananaId, $date);
+        $this->debug("Added ". $asin);
 
 
         //仕事終了をローグに登録
