@@ -20,7 +20,7 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $data=$request->search;
-        GetLotInfoJob:: dispatchNow();
+        dd(GoutteService::getItemData($data));
 
         //return view('pages.sresult', compact('data'));
     }

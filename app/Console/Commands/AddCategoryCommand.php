@@ -57,6 +57,7 @@ class AddCategoryCommand extends Command
         $categoryLevel=0;
         //creating categories tree
         while ($categoryLevel<5) {
+            sleep(mt_rand(1, 3));
             $childCategoriesList=Category::getCategoryList($this->argument('categoryId'));
             // Getting all childs for existing categories
             foreach ($childCategoriesList as $category) {

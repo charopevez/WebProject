@@ -46,7 +46,9 @@ class Product extends Model
     {
         DB::table('products')->insert([
             'BananaId'=>$bananaID,
-            'ItemName'>$data
+            'Maker'=>$data->Maker,
+            'ItemName'=>$data->ItemName,
+            'ImgSRC'=>$data->ImgSRC
         ]);
     }
 }

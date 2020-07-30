@@ -9,19 +9,28 @@ use GuzzleHttp\Client as GuzzleClient;
 class GoutteService{
 
 
-    //Take itemi ifo from Amazon
+    //Take item info from Amazon
     public static function getItemData($asin)
     {
         //prepare url
-        $uri="https://amazon.co.jp/dp/".$asin;
+        $uri="https://www.amazon.co.jp/dp/".$asin;
+        //get HTML code
         $goutteClient = new Client();
         $guzzleClient = new GuzzleClient(array(
             'timeout'=>60,
         ));
         $goutteClient->setClient($guzzleClient);
-        $itemPage=$goutteClient->request('get',$uri);     //get page
+        $page=$goutteClient->request('get',$uri);     //get page
+        //->filter('.LoopList__item')->eq(0);         //find first item
 
-        return $itemPage;
+        $img=$page->filter('#landingImage')->eq(0)->attr('data-old-hires');
+        $name=$page->filter('#productTitle')->eq(0)->text();
+        $brand=$page->filter('#bylineInfo')->eq(0)->text();
+        return array(
+                    'Maker'=>$brand,
+                    'ItemName'=>$name,
+                    'ImgSRC'=>$img
+                    );
     }
 
     public function searchYahooByJan($jan)
