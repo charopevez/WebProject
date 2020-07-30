@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
                 $table->string('Maker')->nullable();
                 $table->string('MakerCode')->nullable();
                 $table->string('ItemName')->nullable();
-                $table->string('ImgSRC', 10)->nullable();
+                $table->string('ImgSRC')->nullable();
             });
         }
     }

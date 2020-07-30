@@ -42,10 +42,11 @@ class Product extends Model
     }
 
     //update Item info
-    public static function updateLotInfo(int $bananaID, $data)
+    public static function updateLotInfo(int $bananaID, $catecoryId, $data)
     {
         DB::table('products')->insert([
             'BananaId'=>$bananaID,
+            'CategoryId'=>$catecoryId,
             'Maker'=>$data->Maker,
             'ItemName'=>$data->ItemName,
             'ImgSRC'=>$data->ImgSRC

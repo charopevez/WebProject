@@ -30,8 +30,8 @@ class UpdateLotInfoJob extends AbstractJob
         //get New Item list
             $asin=$this->lot->AmazonId;
 
-        $date=GoutteService::getItemData($this->item->AmazonId);
-        Product::updateLotInfo($this->item->BananaId, $date);
+        $data=GoutteService::getItemData($this->lot->AmazonId);
+        Product::updateLotInfo($this->lot->BananaId, $this->lot->CategoryId, $data);
         $this->debug("Added ". $asin);
 
 
