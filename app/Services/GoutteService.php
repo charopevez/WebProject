@@ -18,7 +18,7 @@ class GoutteService{
         $goutteClient = new Client();
         $guzzleClient = new GuzzleClient(array(
             'timeout'=>60,
-            'proxy'   => 'tcp://185.189.211.70:8080'
+            'proxy'=>'https://180:180.170.188:8080',
         ));
         $goutteClient->setClient($guzzleClient);
         $page=$goutteClient->request('get',$uri);     //get page
