@@ -18,11 +18,12 @@ class GoutteService{
         $goutteClient = new Client();
         $guzzleClient = new GuzzleClient(array(
             'timeout'=>60,
+            'proxy'   => 'tcp://185.189.211.70:8080'
         ));
         $goutteClient->setClient($guzzleClient);
         $page=$goutteClient->request('get',$uri);     //get page
         //->filter('.LoopList__item')->eq(0);         //find first item
-
+        return $page;
         $img=$page->filter('#imgTagWrapperId')->eq(0)
             ->filter('img')->eq(0)->attr('data-old-hires');
         $name=$page->filter('#productTitle')->eq(0)->text();
