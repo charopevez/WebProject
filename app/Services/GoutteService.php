@@ -23,7 +23,8 @@ class GoutteService{
         $page=$goutteClient->request('get',$uri);     //get page
         //->filter('.LoopList__item')->eq(0);         //find first item
 
-        $img=$page->filter('#landingImage')->eq(0)->attr('data-old-hires');
+        $img=$page->filter('#imgTagWrapperId')->eq(0)
+            ->filter('img')->eq(0)->attr('data-old-hires');
         $name=$page->filter('#productTitle')->eq(0)->text();
         $brand=$page->filter('#bylineInfo')->eq(0)->text();
         return array(
