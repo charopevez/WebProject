@@ -46,9 +46,9 @@ class Product extends Model
     {
         DB::table('products')->where('BananaId', $bananaID)
             ->update([
-            'Maker'=>$data->Maker,
-            'ItemName'=>$data->ItemName,
-            'ImgSRC'=>$data->ImgSRC
+            'Maker'=>$data['Maker'],
+            'ItemName'=>$data['ItemName'],
+            'ImgSRC'=>$data['ImgSRC']
         ]);
     }
 }

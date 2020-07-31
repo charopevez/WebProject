@@ -18,7 +18,11 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $data=$request->search;
-        dd(GoutteService::getItemData($data));
+        $array=GoutteService::getItemData($data);
+        //$this->dispatch(new UpdateIDMainJob($data));
+        print($array['Maker']);
+        print($array['ItemName']);
+        print($array['ImgSRC']);
 
         //return view('pages.sresult', compact('data'));
     }
