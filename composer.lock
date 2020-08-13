@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fee73d19f2513a3675cea6566c15e9e",
+    "content-hash": "1d1cd92958e8d5b6ad13f003512d48c9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -115,7 +115,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cucxabeng/simple-html-dom.git",
+                "url": "git@github.com:cucxabeng/simple-html-dom.git",
                 "reference": "273be838092d34d6e8477d4bf89fcb2a811eb14b"
             },
             "dist": {
@@ -142,6 +142,61 @@
             ],
             "description": "SimpleHtmlDom for Laravel 5",
             "time": "2019-08-08T16:48:28+00:00"
+        },
+        {
+            "name": "curl/curl",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-mod/curl.git",
+                "reference": "3ad560b1fc1bbdf5c7681356ab953fb961f255e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-mod/curl/zipball/3ad560b1fc1bbdf5c7681356ab953fb961f255e5",
+                "reference": "3ad560b1fc1bbdf5c7681356ab953fb961f255e5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^5.6 | ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "~2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Curl": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "php-curl-class",
+                    "homepage": "https://github.com/php-curl-class"
+                },
+                {
+                    "name": "Hassan Amouhzi",
+                    "email": "hassan@anezi.net",
+                    "homepage": "http://hassan.amouhzi.com"
+                },
+                {
+                    "name": "user52",
+                    "homepage": "https://github.com/user52"
+                }
+            ],
+            "description": "cURL class for PHP",
+            "homepage": "https://github.com/php-mod/curl",
+            "keywords": [
+                "curl",
+                "dot"
+            ],
+            "time": "2020-03-19T20:07:26+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

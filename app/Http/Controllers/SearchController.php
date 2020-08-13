@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Jobs\UpdateDB\UpdateIDMainJob;
-
 use App\Services\GoutteService;
+
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -17,12 +15,21 @@ class SearchController extends Controller
 
     //商品検索
     function search(Request $request){
-        $data=$request->search;
-        $array=GoutteService::getItemData($data);
+       $data=$request->search;
+        /* $array=GoutteService::getItemData($data);
+        print_r($array);
+        Product::updateLotInfo(11, $array);
         //$this->dispatch(new UpdateIDMainJob($data));
         print($array['Maker']);
         print($array['ItemName']);
-        print($array['ImgSRC']);
+        print($array['ItemName']);
+        print($array['ImgSRC']);*/
+        dd(GoutteService::searchYahooByJan($data));
+
+
+
+
+
 
         //return view('pages.sresult', compact('data'));
     }

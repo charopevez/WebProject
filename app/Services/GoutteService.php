@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-use Goutte\Client;
-use GuzzleHttp\Client as GuzzleClient;
-
 
 class GoutteService{
 
@@ -14,14 +11,8 @@ class GoutteService{
     {
         //prepare url
         $uri="https://www.amazon.co.jp/dp/".$asin;
-        //get HTML code
-        $goutteClient = new Client();
-        $guzzleClient = new GuzzleClient(array(
-            'timeout'=>60,
-            //'proxy'=>'http://118.27.18.60:8081',
-        ));
-        $goutteClient->setClient($guzzleClient);
-        $page=$goutteClient->request('get',$uri);     //get page
+
+        $page=GuzzleService::getHTMLfromPage($uri);     //get page
         $img=$page->filter('#imgTagWrapperId')->eq(0)
             ->filter('img')->eq(0)->attr('data-old-hires');
         $name=$page->filter('#productTitle')->eq(0)->text();
@@ -33,18 +24,18 @@ class GoutteService{
                     );
     }
 
-    public function searchYahooByJan($jan)
+    public static function searchYahooByJan($jan)
     {
         //prepare url
         $uriTemplate="https://shopping.yahoo.co.jp/search?p=%s&used=2&X=2";
         $uri=sprintf($uriTemplate,$jan);
-        //get HTML code
+        /*//get HTML code
         $goutteClient = new Client();
         $guzzleClient = new GuzzleClient(array(
             'timeout'=>60,
         ));
-        $goutteClient->setClient($guzzleClient);
-        $cheapestItem=$goutteClient->request('get',$uri)     //get page
+        $goutteClient->setClient($guzzleClient);*/
+        $cheapestItem=guzzleService::getHTMLfromPage($uri)     //get page
         ->filter('.LoopList__item')->eq(0);         //find first item
 
         //get link
@@ -59,20 +50,13 @@ class GoutteService{
         return array('YahooLink'=>$link,'YahooPrice'=>$price);
     }
 
-    public function searchRakutenByJan($jan)
+    public static function searchRakutenByJan($jan)
     {
         //prepare url
             $uriTemplate="https://search.rakuten.co.jp/search/mall/%s/?s=2&used=0";
             $uri=sprintf($uriTemplate,$jan);
-        //get HTML code
-            $goutteClient = new Client();
-            $guzzleClient = new GuzzleClient(array(
-                'timeout'=>60,
-            ));
-            $goutteClient->setClient($guzzleClient);
-
         //research HTML
-        $cheapestItem=$goutteClient->request('get',$uri)                             //get page
+        $cheapestItem=guzzleService::getHTMLfromPage($uri)                             //get page
         ->filter('.searchresultitem')->eq(0);         //find first item
 
         //get link
@@ -93,15 +77,8 @@ class GoutteService{
         //prepare url
         $uriTemplate="https://www.amazon.co.jp/b?node=%s";
         $uri=sprintf($uriTemplate,$node);
-        //get HTML code
-        $goutteClient = new Client();
-        $guzzleClient = new GuzzleClient(array(
-            'timeout'=>60,
-        ));
-        $goutteClient->setClient($guzzleClient);
-
         //research HTML
-            $itemList=$goutteClient->request('get',$uri)       //get page
+            $itemList=guzzleService::getHTMLfromPage($uri)       //get page
             ->filter('#mainResults')->filter('li');         //get Search Result Blog
 
         //loop throw items
@@ -137,15 +114,8 @@ class GoutteService{
         //prepare url
         $uriTemplate="https://www.amazon.co.jp/b?node=%s";
         $uri=sprintf($uriTemplate,$node);
-        //get HTML code
-        $goutteClient = new Client();
-        $guzzleClient = new GuzzleClient(array(
-            'timeout'=>60,
-        ));
-        $goutteClient->setClient($guzzleClient);
-
         //research HTML
-        $categoryList=$goutteClient->request('get',$uri)       //get page
+        $categoryList=guzzleService::getHTMLfromPage($uri)       //get page
         ->filter('.octopus-pc-category-card-v2-content')->eq(0);         //get Search Result Blog
 
         //loop throw items
