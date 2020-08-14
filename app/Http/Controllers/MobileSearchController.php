@@ -7,7 +7,7 @@ use App\Product;
 use App\ProductID;
 use Illuminate\Http\Request;
 
-class CustomSearchController extends Controller
+class MobileSearchController extends Controller
 {
     //
     public function search()

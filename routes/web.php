@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Jenssegers\Agent\Agent as Agent;
 
 /*
   |--------------------------------------------------------------------------
@@ -14,9 +15,28 @@ use Illuminate\Support\Facades\Route;
  */
 
     Route::get('/', function () {
-        return view('pages.welcome');
+        $agent=new Agent();
+        if (!$agent->isMobile()) {
+            // you're a mobile device
+            return view('MobilePages.welcome');
+        } else {
+            // you're a desktop device, or something similar
+            return view('pages.welcome');
+        }
     });
-    Route::post('/search','SearchController@search')->name('search');
+
+    Route::post('/search', function (){
+        $agent=new Agent();
+        if ($agent->isMobile()) {
+            // you're a mobile device
+            return \App::call('\App\Http\Controllers\MobileSearchController@search');
+        //'SearchController@search')->name('search');
+        } else {
+            // you're a desktop device, or something similar
+            return  \App::call('\App\Http\Controllers\SearchController@search');
+        }
+        })->name('search');
+
 
     Route::get('/details', function () {
         return view('details');
@@ -28,8 +48,7 @@ use Illuminate\Support\Facades\Route;
 
 
     //second design
-    Route::get('customsearch','CustomSearchController@search');
-    Route::post('autocomplete','CustomSearchController@autocomplete')->name("hint");
+    Route::post('autocomplete','MobileSearchController@autocomplete')->name("hint");
 
 
 
