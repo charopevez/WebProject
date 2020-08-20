@@ -16,7 +16,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="{{ asset('css/stylish-portfolio.min.css') }}" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link href="{{ secure_asset('css/stylish-portfolio.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
 
 

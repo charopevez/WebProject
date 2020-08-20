@@ -16,7 +16,7 @@ use Jenssegers\Agent\Agent as Agent;
 
     Route::get('/', function () {
         $agent=new Agent();
-        if (!$agent->isMobile()) {
+        if ($agent->isMobile()) {
             // you're a mobile device
             return view('MobilePages.welcome');
         } else {
