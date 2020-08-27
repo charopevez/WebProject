@@ -26,14 +26,14 @@ class UpdateIDMainJob extends AbstractJob
 
         //updating Product info
         $chainBranch=[
-            new GetLotInfoJob(),
-            new UpdateIdGetJanCodeJob(),
+            #new GetLotInfoJob(),
+            new UpdateIDGetJanCodeJob(),
             ];
 
         //getting price from another sources
         $chainLast=[
-            new UpdateIDfromRakutenJob(),
-            new UpdateIDfromYahooJob(),
+            #linew UpdateIDfromRakutenJob(),
+            #new UpdateIDfromYahooJob(),
             new UpdateIDUpdateDatabaseJob()
         ];
 

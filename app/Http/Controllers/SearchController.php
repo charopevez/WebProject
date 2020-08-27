@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Jobs\UpdateDB\UpdateIDfromAmazonJob;
+use App\Jobs\UpdateDB\UpdateIDMainJob;
 use App\Services\GoutteService;
 
 use Illuminate\Http\Request;
@@ -24,8 +27,9 @@ class SearchController extends Controller
         print($array['ItemName']);
         print($array['ItemName']);
         print($array['ImgSRC']);*/
-        dd(GoutteService::searchYahooByJan($data));
-
+        dd(GoutteService::searchRakutenByString($data,400,10000,1));
+        //dd(Category::getCategoryChildrenList($data));
+        //$this->dispatch(new UpdateIDMainJob($data));
 
 
 

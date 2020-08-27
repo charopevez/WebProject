@@ -18,7 +18,8 @@
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "weidner/goutte": "^1.5"
+        "weidner/goutte": "^1.5",
+      "ext-mysql_xdevapi": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
