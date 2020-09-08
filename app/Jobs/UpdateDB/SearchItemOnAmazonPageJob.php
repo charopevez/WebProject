@@ -32,7 +32,8 @@ class SearchItemOnAmazonPageJob extends AbstractJob
         //get products from page
         $productList=GoutteService::searchProductFromAmazonByCategory($this->category->AmazonCategoryNode, $this->page);
         //check result, if got any
-        if (!empty($productList)&&$this->page<30) {
+        if ($this->page<30) {
+        if (!empty($productList)) {
             // for each product
             foreach ($productList as $product) {
                 //checking if product exist in DB, if get true, update data, else adding data to generated ID
@@ -53,7 +54,7 @@ class SearchItemOnAmazonPageJob extends AbstractJob
         }
         //create job to scan next page
         dispatch(new SearchItemOnAmazonPageJob($this->category, $this->page+1));
-
+        }
 
         //log statistic
         $this->debug("Category ".$this->category->CategoryName." page ".$this->page." scanned, updated ".$updateCount." record(s), added new ".$addCount." record(s)");
