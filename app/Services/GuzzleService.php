@@ -75,7 +75,7 @@ class GuzzleService
         //get random User Agent from DB
        # $headerList["User-Agent"]=UserAgent::getAgent();
         //get random values for header;
-        $headerList["Referer"]=self::refererList[rand(0,5)];
+        /*$headerList["Referer"]=self::refererList[rand(0,5)];
         $encoding="";
         $count=rand(1,3);
         for ($i=0; $i<=$count;$i++){
@@ -88,7 +88,7 @@ class GuzzleService
             if ($i!=$count) $encoding.=", ";
         }
         $headerList["Accept-Encoding"]=$encoding;
-        $headerList["Accept-Language"]=self::languageList[rand(0,5)];
+        $headerList["Accept-Language"]=self::languageList[rand(0,5)];*/
         $proxy="";
         //generate random proxy
         $flag=false;
