@@ -71,7 +71,7 @@ class GuzzleService
             "Accept-Language"=>""
         );
         //wait from 10-20 sec
-        sleep(rand(1,2));
+        sleep(rand(4,7));
         //get random User Agent from DB
        # $headerList["User-Agent"]=UserAgent::getAgent();
         //get random values for header;
