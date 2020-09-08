@@ -38,7 +38,7 @@ class SearchController extends Controller
         print($array['ItemName']);
         print($array['ImgSRC']);*/
         //dd(GoutteService::searchAmazonByString($data,1));
-        print(GuzzleService::getHTMLfromPage($data)->html());
+        dd(GoutteService::searchRakutenByString($data, 1000, 110000, 2));
         //$this->dispatch(new UpdateIDMainJob($data));
 
 
