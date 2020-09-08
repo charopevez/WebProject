@@ -195,10 +195,9 @@ class GoutteService{
         //prepare url
         $uriTemplate="https://www.amazon.co.jp/b?node=%s&page=%d";
         $uri=sprintf($uriTemplate, $node, $page);
-        print $uri;
+        print $uri."\n";
         //research HTML
         $page=GuzzleService::getHTMLfromPage($uri);       //get page
-        print $page->html();
         // if there is no results return error
         try {
             $itemList=$page->filter('#mainResults')->filter('li');         //get Search Result Blog
