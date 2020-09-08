@@ -21,6 +21,7 @@ class GetLotInfoJob extends AbstractJob
 
         //get New Item list
         $items=Product::GetNewItemsID();
+        print_r($items);
         foreach ($items as $item){
             dispatch(new UpdateLotInfoJob($item));
 

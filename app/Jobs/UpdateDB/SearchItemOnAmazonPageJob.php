@@ -28,25 +28,30 @@ class SearchItemOnAmazonPageJob extends AbstractJob
         $updateCount=0;
         $addCount=0;
 
+
         //get products from page
         $productList=GoutteService::searchProductFromAmazonByCategory($this->category->AmazonCategoryNode, $this->page);
-
-        // for each product
-        foreach ($productList as $product){
-            //checking if product exist in DB, if get true, update data, else adding data to generated ID
-            $bananaID=ProductID::getBananaId($product['AmazonId']);
-            if ($bananaID==-1) {
-                //if exist update info
-                ProductID::updateAmazonData($product['AmazonId'], $product['AmazonPrice']);
-                //increase update counter
-                $updateCount++;
-            } else {
-                //else add to Products table record
-                ProductID::insertAmazonData($bananaID,$product['AmazonId'], $product['AmazonPrice']);
-                Product::AddNewItem($bananaID, $this->category->CategoryId);
-                //increase update counter
-                $addCount++;
+        //check result, if got any
+        if (!empty($productList)&&$this->page<3) {
+            // for each product
+            foreach ($productList as $product) {
+                //checking if product exist in DB, if get true, update data, else adding data to generated ID
+                $bananaID = ProductID::getBananaId($product['AmazonId']);
+                if ($bananaID == -1) {
+                    //if exist update info
+                    ProductID::updateAmazonData($product['AmazonId'], $product['AmazonPrice']);
+                    //increase update counter
+                    $updateCount++;
+                } else {
+                    //else add to Products table record
+                    ProductID::insertAmazonData($bananaID, $product['AmazonId'], $product['AmazonPrice']);
+                    Product::AddNewItem($bananaID, $this->category->CategoryId);
+                    //increase update counter
+                    $addCount++;
+                }
             }
+            //create job to scan next page
+            dispatch(new SearchItemOnAmazonPageJob($this->category, $this->page+1));
         }
 
 

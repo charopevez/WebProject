@@ -2,6 +2,8 @@
 
 namespace App\Jobs\UpdateDB;
 
+use App\ProductID;
+
 class UpdateIDfromRakutenJob extends AbstractJob
 {
     public function handle()
@@ -9,6 +11,12 @@ class UpdateIDfromRakutenJob extends AbstractJob
         //仕事開始をローグに登録
         $this->debug("start");
 
+        //get list not updated items
+        $itemList=ProductID::GetListNotUpdatedRakutenIems();
+
+        foreach ($itemList as $item) {
+            //dispatch(new UpdateIDSearchRakutenLink($item));
+        }
 
         //仕事終了をローグに登録
         $this->debug("finish");

@@ -51,5 +51,10 @@ class Product extends Model
             'ImgSRC'=>$data['ImgSRC']
         ]);
     }
+
+    public static function GetItemData($bananaId)
+    {
+        return DB::table('products')->where('BananaId', $bananaId)->get()->toArray();
+    }
 }
 

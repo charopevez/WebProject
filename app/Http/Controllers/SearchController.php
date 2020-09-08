@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Jobs\UpdateDB\GetLotInfoJob;
+use App\Jobs\UpdateDB\SearchItemOnAmazonPageJob;
 use App\Jobs\UpdateDB\UpdateIDfromAmazonJob;
+use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
+use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
+use App\Jobs\UpdateDB\UpdateIDGetListWithoutJan;
 use App\Jobs\UpdateDB\UpdateIDMainJob;
+use App\Product;
+use App\ProductID;
 use App\Services\GoutteService;
 
 use Illuminate\Http\Request;
@@ -18,18 +25,21 @@ class SearchController extends Controller
 
     //商品検索
     function search(Request $request){
-       $data=$request->search;
-        /* $array=GoutteService::getItemData($data);
-        print_r($array);
-        Product::updateLotInfo(11, $array);
+       $data=$request->search;// $_get['search]
+      /*  $itemData=Product::GetItemData($data);
+        $keyWords=explode(" ",$itemData[0]->ItemName);
+        dd($keyWords);*/
+        $category=$request->category;
+        //$array=GoutteService::getItemData($data);
+        /* Product::updateLotInfo(11, $array);
         //$this->dispatch(new UpdateIDMainJob($data));
         print($array['Maker']);
         print($array['ItemName']);
-        print($array['ItemName']);
         print($array['ImgSRC']);*/
-        dd(GoutteService::searchRakutenByString($data,400,10000,1));
-        //dd(Category::getCategoryChildrenList($data));
-        //$this->dispatch(new UpdateIDMainJob($data));
+        //dd(GoutteService::searchAmazonByString($data,1));
+        //dd(GoutteService::searchProductFromAmazonByCategory($data,1));
+        $this->dispatch(new UpdateIDMainJob("107010100"));
+
 
 
 

@@ -22,8 +22,10 @@ class CreateProductIDSTable extends Migration
                 $table->mediumInteger('AmazonPrice')->unsigned()->nullable();
                 $table->string('YahooLink')->nullable();
                 $table->mediumInteger('YahooPrice')->unsigned()->nullable();
+                $table->date('YahooLinkWasUpdatedAt')->unsigned()->nullable();
                 $table->string('RakutenLink')->nullable();
                 $table->mediumInteger('RakutenPrice')->unsigned()->nullable();
+                $table->date('RakutenLinkWasUpdatedAt')->unsigned()->nullable();
                 $table->unique(['BananaId','AmazonId']);
             });
         }

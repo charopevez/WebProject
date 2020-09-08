@@ -40,7 +40,7 @@ searchBox.forEach((elm) => {
 /*Animated menu*/
 
 
-/*Search bar*/
+/*Search on site directly*/
 
-/*Search bar*/
+/*Search on site directly*/
 

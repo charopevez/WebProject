@@ -80,7 +80,7 @@ class GoutteService{
         $price = str_replace(",", "",
             $cheapestItem->filter('div')->eq(3)->
             filter('span')->eq(0)->text());
-        $searchResult+=array('YahooLink'=>$link,'YahooPrice'=>$price);
+        $searchResult=array('YahooLink'=>$link,'YahooPrice'=>$price);
         //検索結果を返す
         return $searchResult;
     }
@@ -142,19 +142,68 @@ class GoutteService{
         return array('RakutenLink'=>$link,'RakutenPrice'=>$price);
     }
 
+    public static function searchAmazonByString($request, $pagecount)
+    {
+        $searchResult=[];
+        //prepare url
+        $uriTemplate = "https://www.amazon.co.jp/s?k=%s";
+        $uri=[];
+        for ($i=1; $i<=$pagecount; $i++) {
+            $uri[$i] = sprintf($uriTemplate, $request, $i);
+            //get page
+            $page = GuzzleService::getHTMLfromPage($uri[$i]);
+            //chech if there a result
+            if (empty($page->filter('.s-main-slot'))) return -1;
+            $itemlist = $page->filter('.s-main-slot')->filter('div');
+            //filter results
+            foreach ($itemlist as $item) {
+                $itemDom = new Crawler($item);
+                //check if its item or other div
+                if (!empty($itemDom->attr('data-asin'))) {
+                    print $itemDom->html();
+                    if (!empty($itemDom->filter('.a-link-normal'))) {
+                        //get link
+                        $link = $itemDom->filter('.a-link-normal')->attr('href');
+                        //get item name
+                        $name = "";
+                        //get img src
+                        $img = "";
+                        //get Price
+                        $price = 0;
+                        if (!empty($asin)) {
+                            try {
+                                $rawPrice = $itemDom->filter('.s-price')->text();
+                                //get price without ","
+                                $price = str_replace(",", "", $rawPrice);
+                                //get price without "￥"
+                                $price = str_replace("￥ ", "", $price);
+                                //if its a price range, set it to min
+                                $price = explode(" ", $price)[0];
+                            } catch (\Exception $e) {
+                            }
+                        }
+                    }
+                    array_push($searchResult, array('AmazonItemName' => $name, 'AmazonImageSrc' => $img, 'AmazonLink' => $link, 'AmazonPrice' => $price));
+                }
+            }
+        }
+        return $searchResult;
+    }
+
     public static function searchProductFromAmazonByCategory($node,$page)
     {
         //prepare url
         $uriTemplate="https://www.amazon.co.jp/b?node=%s&page=%d";
         $uri=sprintf($uriTemplate, $node, $page);
-        echo $uri;
         //research HTML
         $page=GuzzleService::getHTMLfromPage($uri);       //get page
-
+        //print $page->html();
         // if there is no results return error
-        if (empty($page->filter('#mainResults'))) return -1;
-
-        $itemList=$page->filter('#mainResults')->filter('li');         //get Search Result Blog
+        try {
+            $itemList=$page->filter('#mainResults')->filter('li');         //get Search Result Blog
+        } catch (\Exception $e) {
+            print $e;
+        }
 
         //loop throw items
         $result = $itemList->each(function ($node) {
@@ -204,9 +253,13 @@ class GoutteService{
             return array("CategoryId"=>$categoryId,"AmazonCategoryNode"=>$categoryNode, "CategoryName"=>$categoryName);
         });
 
+
         return  $result;
     }
 
-
+    public static function searchJanFor($asin)
+    {
+        return -1;
+    }
 
 }
