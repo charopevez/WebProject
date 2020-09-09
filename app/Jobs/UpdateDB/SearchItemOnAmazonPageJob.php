@@ -32,7 +32,7 @@ class SearchItemOnAmazonPageJob extends AbstractJob
         //get products from page
         $productList=GoutteService::searchProductFromAmazonByCategory($this->category->AmazonCategoryNode, $this->page);
         //check result, if got any
-        if ($this->page<22) {
+        if ($this->page<50) {
         if (!empty($productList)) {
             // for each product
             foreach ($productList as $product) {

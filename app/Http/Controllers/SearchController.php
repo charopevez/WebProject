@@ -38,7 +38,7 @@ class SearchController extends Controller
         print($array['ImgSRC']);*/
         //dd(GoutteService::searchAmazonByString($data,1));
         //dd(GoutteService::searchRakutenByString($data, 1000, 110000, 2));
-        $this->dispatch(new GetLotInfoJob());
+        $this->dispatch(new UpdateIDfromAmazonJob($data));
 
 
 

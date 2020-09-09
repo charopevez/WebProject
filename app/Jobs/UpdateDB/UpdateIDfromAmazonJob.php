@@ -23,7 +23,7 @@ class UpdateIDfromAmazonJob extends AbstractJob
         //create jobs for each category
         foreach ($this->categiriesList as $category ) {
             $this->debug("scanning ".$category->CategoryName);
-            dispatch(new SearchItemOnAmazonPageJob($category, 1));
+            dispatch(new SearchItemOnAmazonPageJob($category, 23));
         }
 
         //仕事終了をローグに登録
