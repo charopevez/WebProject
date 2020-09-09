@@ -30,7 +30,6 @@ class SearchController extends Controller
       /*  $itemData=Product::GetItemData($data);
         $keyWords=explode(" ",$itemData[0]->ItemName);
         dd($keyWords);*/
-        $category=$request->category;
         //$array=GoutteService::getItemData($data);
         /* Product::updateLotInfo(11, $array);
         //$this->dispatch(new UpdateIDMainJob($data));
@@ -38,8 +37,8 @@ class SearchController extends Controller
         print($array['ItemName']);
         print($array['ImgSRC']);*/
         //dd(GoutteService::searchAmazonByString($data,1));
-        dd(GoutteService::searchRakutenByString($data, 1000, 110000, 2));
-        //$this->dispatch(new UpdateIDMainJob($data));
+        //dd(GoutteService::searchRakutenByString($data, 1000, 110000, 2));
+        $this->dispatch(new GetLotInfoJob());
 
 
 

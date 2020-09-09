@@ -14,12 +14,13 @@ class GoutteService{
     {
         //prepare url
         $uri="https://www.amazon.co.jp/dp/".$asin;
-
+        print $uri."\n";
         $page=GuzzleService::getHTMLfromPage($uri);     //get page
         $img=$page->filter('#imgTagWrapperId')->eq(0)
             ->filter('img')->eq(0)->attr('data-old-hires');
         $name=$page->filter('#productTitle')->eq(0)->text();
         $brand=$page->filter('#bylineInfo')->eq(0)->text();
+        $brand=str_replace('ブランド:', '', $brand);
         return array(
                     'Maker'=>$brand,
                     'ItemName'=>$name,

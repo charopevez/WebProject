@@ -41,6 +41,15 @@ class Product extends Model
 
     }
 
+    public static function GetItemContains(string $string)
+    {
+        return DB::table('products')
+            ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
+            ->select(['products.BananaId','product_i_d_s.AmazonId'])
+            ->where('products.Maker',"like","%{$string}%")->get()->toArray();
+
+    }
+
     //update Item info
     public static function updateLotInfo(int $bananaID, $data)
     {
@@ -56,5 +65,7 @@ class Product extends Model
     {
         return DB::table('products')->where('BananaId', $bananaId)->get()->toArray();
     }
+
+
 }
 
