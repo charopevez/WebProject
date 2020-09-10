@@ -69,6 +69,7 @@ class Product extends Model
     public static function SearchDB($string)
     {
         return DB::table('products')
+            ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
             ->where('ItemName',"like","%{$string}%")->get()->toArray();
     }
 
