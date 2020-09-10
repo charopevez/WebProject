@@ -14,8 +14,8 @@
     </div>
     
     <div class="job-btn align-self-center">
-        <h4>{{$itemDetails->CategoryId}}</h4>
-        <a href="{{$itemDetails->Maker}}" class="third-btn job-btn2">More Detail</a>
+        <h4>{{$itemDetails->AmazonPrice}}</h4>
+        <a href="{{$itemDetails->AmazonLink}}" class="third-btn job-btn2">Link</a>
         <!-- <a href="#" class="third-btn">apply</a> -->
     </div>
 </div>

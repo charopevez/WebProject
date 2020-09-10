@@ -27,7 +27,7 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $search=$request->search;// $_get['search]
-      $data=Product::SearchDB("SSD");
+      $data=Product::SearchDB($search);
       return view('pages.sresult', compact('data'));
     }
 }
