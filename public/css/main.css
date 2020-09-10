@@ -1,0 +1,200 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,700);body {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+****************
+SearchBox
+****************
+*/
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.search_block {
+  background: #F6F792;
+  height: 70vh;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+#search_suggestion {
+  width: 15px;
+  background: transparent;
+  transition: border 0.3s 0s, width 0.2s 0.3s cubic-bezier(0.225, 0.01, 0.475, 1.01), text-indent 0.2s 0.3s;
+  padding: 20px;
+  border-color: #337c04;
+  text-indent: 30px;
+  outline: none;
+  font-size: 1.2em;
+  color: #0a3304;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+}
+
+.search_bar {
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  overflow: hidden;
+  width: 280px;
+  position: relative;
+  margin: 0 auto;
+}
+
+#search_input {
+  width: 15px;
+  background: transparent;
+  transition: border 0.3s 0s, width 0.2s 0.3s cubic-bezier(0.225, 0.01, 0.475, 1.01), text-indent 0.2s 0.3s;
+  padding: 20px;
+
+  text-indent: 30px;
+  outline: none;
+  border: 0px solid #337c04;
+  font-size: 1.2em;
+  color: #0a3304;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+}
+
+.search_bar ::-webkit-input-placeholder {
+  /* Safari, Chrome and Opera */
+  color: #337c04;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+}
+
+.search_bar ::-moz-input-placeholder {
+  /* Safari, Chrome and Opera */
+  color: #337c04;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+}
+
+.search_bar ::-o-input-placeholder {
+  /* Safari, Chrome and Opera */
+  color: #337c04;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+}
+
+#search_btn {
+  display: none;
+}
+
+#search_btn:checked + label + #search_input {
+    padding-right: 100px;
+  width: 150px;
+  border: 5px solid #337c04;
+  text-indent: 0px;
+}
+
+#search_btn:checked + label i {
+  right: 0px;
+  transform: translateY(-50%) translateX(50%) rotate(360deg) scale(0);
+  color: #337c04;
+}
+
+#search_btn:checked + label .last {
+  left: 220px;
+  transform: translateY(-50%) rotate(360deg) scale(1);
+}
+
+#search_btn:checked + label p {
+  top: 50%;
+  transition: all 0.3s 0.45s;
+}
+
+#search_btn:not(checked) + label p {
+  top: -50%;
+  transition: all 0.3s 0s;
+}
+
+body .search_bar .last {
+  transform: translateY(-50%) rotate(0deg) scale(0);
+}
+
+body .search_bar i {
+  position: absolute;
+  font-size: 30px;
+  top: 50%;
+  transform: translateY(-50%) translateX(50%) rotate(0deg) scale(1);
+  cursor: pointer;
+  z-index: 2;
+  margin: auto;
+  border-radius: 4px;
+  width: 56px;
+  right: 50%;
+  height: 54px;
+  background: transparent;
+  transition: right 0.3s 0.3s, transform 0.3s 0.3s, color 0.3s;
+  line-height: 60px;
+  color: #115306;
+}
+
+.search_bar i:hover {
+  color: #337c04;
+}
+
+.search_bar p {
+  position: absolute;
+  margin: 0;
+  right: 52px;
+  color: #337c04;
+  font-weight: 700;
+  font-size: 30px;
+  top: -50%;
+  transform: translateY(-50%) rotate(0deg) scale(1);
+}
+.inclicked{
+
+}
+
+/*
+****************
+SearchBox
+****************
+*/
+
+/*
+****************
+Menu#1
+****************
+*/
+
+/*
+****************
+Menu#1
+****************
+*/
+
+/*
+****************
+Menu#2
+****************
+*/
+
+/*
+****************
+Menu#2
+****************
+*/
+
+/*
+****************
+Menu#3
+****************
+*/
+
+/*
+****************
+Menu#3
+****************
+*/
+

@@ -53,31 +53,22 @@ class AddCategoryCommand extends Command
         if (Category::createCategory($categoriesList[0])==0) $this->info("カテゴリ　".$categoriesList[0]['CategoryName']."追加しました。");
            else {
                $this->info("カテゴリ　" . $categoriesList[0]['CategoryName'] . "追加出来ませんでした。　終了します");
-               exit(1);
-           }
-           /*if ($categoriesList[0]['CategoryId'] % 100!=0) $parentLevel=2;
-           else if ($categoriesList[0]['CategoryId'] % 10000!=0) $parentLevel=1;
-           else $parentLevel=0;*/
-
-           //get child list
-        $child=$gService->getChildGategoriesFromAmazon($categoriesList[0]['CategoryId'], $categoriesList[0]['AmazonCategoryNode'], 0);
-        dd ($child);
-        /*if (!empty($categoriesList[0]['CategoryId'])) {
-            if ($this->argument('categoryName') == -1) {
-                $this->info("child");
-
-                //take Categorynode from "category" table by ID
-
-            } else {
-
-                if (!empty($this->argument('AmazonCategoryNode'))) {
-                    $this->info($this->argument('categoryId'));
-                    $this->info($this->argument('categoryId'). $this->argument('categoryName').$this->argument('AmazonCategoryNode'));
-
-                    //add new record to Category Table
-                    Category::createCategory($this->argument('categoryId'), $this->argument('categoryName'), $this->argument('AmazonCategoryNode'));
-                    }
+               }
+        $categoryLevel=0;
+        //creating categories tree
+        while ($categoryLevel<5) {
+            sleep(mt_rand(1, 3));
+            $childCategoriesList=Category::getCategoryList($this->argument('categoryId'));
+            // Getting all childs for existing categories
+            foreach ($childCategoriesList as $category) {
+                //checking what categories level we are investigating
+                if(($category->CategoryId)%pow(10, 10-$categoryLevel*2)!=0) {
+                    //childs array
+                    $childs=$gService->getChildGategoriesFromAmazon($category->CategoryId, $category->AmazonCategoryNode, $categoryLevel+1);
+                    Category::createCategory($childs);
+                }
             }
-        }*/
+            $categoryLevel++;
+        }
     }
 }

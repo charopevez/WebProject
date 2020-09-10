@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Jobs\UpdateID;
+namespace App\Jobs\UpdateDB;
 
-class UpdateIDfromRakutenJob extends AbstractJob
+
+class UpdateIDUpdateDatabaseJob extends AbstractJob
 {
+
     public function handle()
     {
         //仕事開始をローグに登録
@@ -14,3 +16,4 @@ class UpdateIDfromRakutenJob extends AbstractJob
         $this->debug("finish");
     }
 }
+

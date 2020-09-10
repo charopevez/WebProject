@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\UpdateID;
+namespace App\Jobs\UpdateDB;
 
 class UpdateIDJob extends AbstractJob
 {

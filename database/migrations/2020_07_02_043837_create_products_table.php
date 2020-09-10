@@ -13,20 +13,22 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->string('BananaId');
-            $table->foreign('BananaId')->references('BananaId')
-                                                ->on('product_i_d_s')
-                                                ->onDelete('cascade')
-                                                ->onUpdate('cascade');
-            $table->Integer('CategoryId');
-            $table->foreign('CategoryId')->references('CategoryId')
-                                                ->on('categories');
-            $table->string('Maker');
-            $table->string('MakerCode')->nullable();
-            $table->string('ItemName');
-            $table->string('color',10);
-        });
+        if (!Schema::hasTable('products')) {
+            Schema::create('products', function (Blueprint $table) {
+                $table->bigInteger('BananaId')->unsigned();
+                $table->foreign('BananaId')->references('BananaId')
+                    ->on('product_i_d_s')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+                $table->Integer('CategoryId');
+                $table->foreign('CategoryId')->references('CategoryId')
+                    ->on('categories');
+                $table->string('Maker')->nullable();
+                $table->string('MakerCode')->nullable();
+                $table->string('ItemName')->nullable();
+                $table->string('ImgSRC')->nullable();
+            });
+        }
     }
 
     /**
