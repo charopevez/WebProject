@@ -15,18 +15,19 @@ use Jenssegers\Agent\Agent as Agent;
  */
 
     Route::get('/', function () {
-        $agent=new Agent();
+        return view('pages.welcome');
+        /* $agent=new Agent();
         if ($agent->isMobile()) {
             // you're a mobile device
             return view('MobilePages.welcome');
         } else {
             // you're a desktop device, or something similar
             return view('pages.welcome');
-        }
+        } */
     });
 
     Route::post('/search', function (){
-        $agent=new Agent();
+        /* $agent=new Agent();
         if ($agent->isMobile()) {
             // you're a mobile device
             return \App::call('\App\Http\Controllers\MobileSearchController@search');
@@ -34,9 +35,10 @@ use Jenssegers\Agent\Agent as Agent;
         } else {
             // you're a desktop device, or something similar
             return  \App::call('\App\Http\Controllers\SearchController@search');
-        }
+        } */
+        return  \App::call('\App\Http\Controllers\SearchController@search');
         })->name('search');
-
+        
 
     Route::get('/details', function () {
         return view('details');

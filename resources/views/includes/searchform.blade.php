@@ -26,11 +26,8 @@
               <div class="col-lg-12">
               <form action="{{route('search')}}" method="post" class="d-md-flex justify-content-between">
                     @csrf
-                    <input type="text" name="search" placeholder="{{$data['search']}}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'" required>
+                    <input type="text" name="search" placeholder="{{$data['search'] ?? " "}}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'" required>
                       <select name = "category">
-                      @foreach ($data['CategoryList'] as $item)
-                        <option value="{{$item['CategoryId']}}">{{$item['CategoryId']}}</option>
-                      @endforeach
                       </select>
 
                       <select name = "website">
