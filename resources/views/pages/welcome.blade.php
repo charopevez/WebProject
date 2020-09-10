@@ -3,7 +3,7 @@
 
     <!-- Header -->
   <header class="masthead d-flex">
-    <div class="container text-center my-auto">
+    <div class="container text-center my-auto sticky-top">
       <h1 class="mb-1">52</h1>
       <h1 class="mb-1">BANANA</h1>
       <h3 class="mb-5">
@@ -12,7 +12,7 @@
       <br>
       
       <!-- Search Area Starts -->
-      <div class="search-area">
+      <!-- <div class="search-area">
         <div class="search-bg">
             <div class="container">
                 <div class="row">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Search Area End -->
 
     </div>
