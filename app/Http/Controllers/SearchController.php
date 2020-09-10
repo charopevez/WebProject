@@ -28,6 +28,7 @@ class SearchController extends Controller
     function search(Request $request){
         $search=$request->search;// $_get['search]
       $data=Product::SearchDB("SSD");
+      dd($data);
       return view('pages.sresult', compact('data'));
     }
 }
