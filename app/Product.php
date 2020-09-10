@@ -37,7 +37,7 @@ class Product extends Model
         return  DB::table('products')
                         ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
                         ->select(['products.BananaId','product_i_d_s.AmazonId'])
-                        ->whereNull('products.ItemName')->get()->toArray();
+                        ->whereNull('products.ItemName')->get()->take(100)->toArray();
 
     }
 

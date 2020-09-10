@@ -27,10 +27,10 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $search=$request->search;// $_get['search]
+        $this->dispatch(new GetLotInfoJob());
+     // $data=Product::SearchDB($search);
 
-      $data=Product::SearchDB($search);
 
-
-      return view('pages.sresult', compact('data'));
+      //return view('pages.sresult', compact('data'));
     }
 }
