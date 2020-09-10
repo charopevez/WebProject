@@ -26,20 +26,9 @@ class SearchController extends Controller
 
     //商品検索
     function search(Request $request){
-       $data=$request->search;// $_get['search]
-      /*  $itemData=Product::GetItemData($data);
-        $keyWords=explode(" ",$itemData[0]->ItemName);
-        dd($keyWords);*/
-        //$array=GoutteService::getItemData($data);
-        /* Product::updateLotInfo(11, $array);
-        //$this->dispatch(new UpdateIDMainJob($data));
-        print($array['Maker']);
-        print($array['ItemName']);
-        print($array['ImgSRC']);*/
-        //dd(GoutteService::searchAmazonByString($data,1));
-        //dd(GoutteService::searchRakutenByString($data, 1000, 110000, 2));
-        $this->dispatch(new UpdateIDfromAmazonJob($data));
-
+       $search=$request->search;// $_get['search]
+      $searchResult=Product::SearchDB($search);
+      dd($searchResult);
 
 
 
