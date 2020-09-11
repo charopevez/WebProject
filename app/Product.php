@@ -79,10 +79,10 @@ class Product extends Model
     public static function SearchDB($string,$sortBy,$searchMode)
     {
         $result=[];
-        $mode=10*$sortBy+$searchMode;
+        /* $mode=10*$sortBy+$searchMode;
         switch ($mode) {
             case 0:
-        }
+        } */
         $query=DB::table('products')
             ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
             ->where('ItemName',"like","%{$string}%");
