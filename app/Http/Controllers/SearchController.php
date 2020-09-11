@@ -10,6 +10,7 @@ use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
 use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
 use App\Jobs\UpdateDB\UpdateIDGetListWithoutJan;
 use App\Jobs\UpdateDB\UpdateIDMainJob;
+use App\Jobs\UpdateDB\UpdateLotInfoJob;
 use App\Product;
 use App\ProductID;
 use App\Services\GoutteService;
@@ -27,10 +28,9 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $search=$request->search;// $_get['search]
-        $this->dispatch(new GetLotInfoJob());
-     // $data=Product::SearchDB($search);
-
-
-      //return view('pages.sresult', compact('data'));
+        $sortBy=$request->orderBy;
+        $searchAt=$request->option;
+        $data=Product::SearchDB($search, $sortBy, $searchAt);
+        return view('pages.sresult', compact('data'));
     }
 }

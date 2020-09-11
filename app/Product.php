@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Result;
 
 class Product extends Model
 {
@@ -40,6 +41,15 @@ class Product extends Model
                         ->whereNull('products.ItemName')->get()->take(100)->toArray();
 
     }
+    public static function GetItemsIDbyBananaId($id)
+    {
+
+        return  DB::table('products')
+            ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
+            ->select(['products.BananaId','product_i_d_s.AmazonId'])
+            ->where('products.BananaId', $id)->get()->take(100)->toArray();
+
+    }
 
     public static function GetItemContains(string $string)
     {
@@ -66,11 +76,18 @@ class Product extends Model
         return DB::table('products')->where('BananaId', $bananaId)->get()->toArray();
     }
 
-    public static function SearchDB($string)
+    public static function SearchDB($string,$sortBy,$searchMode)
     {
-        return DB::table('products')
+        $result=[];
+        $mode=10*$sortBy+$searchMode;
+        switch ($mode) {
+            case 0:
+        }
+        $query=DB::table('products')
             ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
-            ->where('ItemName',"like","%{$string}%")->get()->toArray();
+            ->where('ItemName',"like","%{$string}%");
+        $result=$query->get()->toArray();
+        return $result;
     }
 
 

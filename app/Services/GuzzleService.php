@@ -93,7 +93,7 @@ class GuzzleService
         //generate random proxy
         $flag=false;
         do {
-            switch (0) {
+            switch (2) {
                 case 0:
                     //get proxy from Foxtools.ru
                     $apiFoxtool = Http::get("http://api.foxtools.ru/v2/Proxy?free=Yes&type=3&anonymity=12");
@@ -112,6 +112,8 @@ class GuzzleService
                     break;
                 case 2:
                     //get proxy from luminati.io
+                    $flag=true;
+                    break;
                 case 3:
                     //get proxy from zenscrape
                     $apiZenscrape=Http::get("https://app.zenscrape.com/api/v1/get?".

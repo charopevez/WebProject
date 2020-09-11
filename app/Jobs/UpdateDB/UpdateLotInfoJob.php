@@ -29,8 +29,9 @@ class UpdateLotInfoJob extends AbstractJob
 
         //get New Item list
             $asin=$this->lot->AmazonId;
-
+        print($asin=$this->lot->BananaId);
         $data=GoutteService::getItemData($this->lot->AmazonId);
+        print_r($data);
         Product::updateLotInfo($this->lot->BananaId, $data);
         $this->debug("Added ". $asin);
 
