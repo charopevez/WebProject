@@ -29,7 +29,7 @@ class SearchController extends Controller
         $search=$request->search;// $_get['search]
 
       $data=Product::SearchDB($search);
-
+      dd($request);
 
       return view('pages.sresult', compact('data'));
     }
