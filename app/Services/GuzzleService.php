@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Proxy;
 use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Support\Facades\Http;
@@ -93,18 +94,12 @@ class GuzzleService
         //generate random proxy
         $flag=false;
         do {
-            switch (2) {
+            switch (0) {
                 case 0:
                     //get proxy from Foxtools.ru
-                    $apiFoxtool = Http::get("http://api.foxtools.ru/v2/Proxy?free=Yes&type=3&anonymity=12");
-                    //filter high anonimity
-                    if ($apiFoxtool->status() == 200) {
-                        $items = $apiFoxtool->json()["response"]["items"];
-                        $proxyWithData=$items[rand(0, count($items)-1)];
-                        $proxy=$proxyWithData["ip"].":".$proxyWithData["port"];
-                        $flag=true;
-                    };
-
+                    $proxyArray=Proxy::getRandom()[0];
+                    $proxy=$proxyArray->Proxy.":".$proxyArray->Port;
+                    $flag=true;
                     break;
                 case 1:
                     $proxy=self::localProxiesList[rand(0,count(self::localProxiesList))];
@@ -121,6 +116,7 @@ class GuzzleService
                     return $apiZenscrape;
             }
         } while ($flag!=true);
+        print $proxy;
 
         $goutteClient = new Client();
         $guzzleClient = new GuzzleClient(array(

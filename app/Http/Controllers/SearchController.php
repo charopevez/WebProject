@@ -13,10 +13,12 @@ use App\Jobs\UpdateDB\UpdateIDMainJob;
 use App\Jobs\UpdateDB\UpdateLotInfoJob;
 use App\Product;
 use App\ProductID;
+use App\Proxy;
 use App\Services\GoutteService;
 
 use App\Services\GuzzleService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SearchController extends Controller
 {
@@ -39,9 +41,8 @@ class SearchController extends Controller
           case 2:
                 $data=collect($data)->sortBy('AmazonPrice')->reverse()->toArray();
                 break;
-        }       
-        
-        /* dd($data); */
+        }
+
         return view('pages.sresult', compact('data'));
 
     }

@@ -4,7 +4,7 @@
       <div class="row">
           <div class="col-lg-12 text-center mt-5">
               <span>49 Results found for “</span>
-                
+              {{ Request()->searchg }}
               <span>”</span>
           </div>
       </div>
@@ -19,7 +19,7 @@
             @include('includes.results')
           @endforeach
           </div>
-        
+
         </div>
       <!-- <div class="more-job-btn mt-5 text-center">
           <a href="#" class="template-btn">more</a>
