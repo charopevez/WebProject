@@ -14,8 +14,33 @@
     </div>
     
     <div class="job-btn align-self-center">
-        <h4>{{$itemDetails->AmazonPrice}}</h4>
-        <a href="{{$itemDetails->AmazonLink}}" class="third-btn job-btn2">Link</a>
+        @switch (request()->option)
+                @case ('Amazon')
+                @if(!empty($itemDetails->AmazonPrice))
+                <h4>{{$itemDetails->AmazonPrice}}</h4> 
+                <a href="{{$itemDetails->AmazonLink}}" class="third-btn job-btn2">Link</a>   
+                @endif
+                @break
+                  
+                @case ('Rakuten')
+                @if(!empty($itemDetails->RakutenPrice))
+                <h4>{{$itemDetails->RakutenPrice}}</h4>  
+                <a href="{{$itemDetails->RakutenLink}}" class="third-btn job-btn2">Link</a> 
+                @endif
+                @break
+
+                @case ('Yahoo')
+                @if(!empty($itemDetails->YahooPrice))
+                <h4>{{$itemDetails->YahooPrice}}</h4>
+                <a href="{{$itemDetails->YahooLink}}" class="third-btn job-btn2">Link</a>
+                @endif
+                 @break
+
+                 @default
+                 <h4>{{$itemDetails->Price}}</h4>
+                 <a href="{{$itemDetails->Link}}" class="third-btn job-btn2">Link</a>
+
+        @endswitch
         <!-- <a href="#" class="third-btn">apply</a> -->
     </div>
 </div>
