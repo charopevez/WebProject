@@ -116,8 +116,6 @@ class GuzzleService
                     return $apiZenscrape;
             }
         } while ($flag!=true);
-        print $proxy;
-
         $goutteClient = new Client();
         $guzzleClient = new GuzzleClient(array(
             'timeout'=>60,

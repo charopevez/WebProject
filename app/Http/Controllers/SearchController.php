@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Jobs\UpdateDB\GetLotInfoJob;
-use App\Jobs\UpdateDB\SearchItemOnAmazonPageJob;
-use App\Jobs\UpdateDB\UpdateIDfromAmazonJob;
-use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
+
 use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
-use App\Jobs\UpdateDB\UpdateIDGetListWithoutJan;
-use App\Jobs\UpdateDB\UpdateIDMainJob;
-use App\Jobs\UpdateDB\UpdateLotInfoJob;
-use App\Product;
+use App\Jobs\UpdateDB\UpdateIDSearchRakutenLink;
+use App\Jobs\UpdateDB\UpdateIDSearchYahooLink;
 use App\ProductID;
-use App\Proxy;
+
 use App\Services\GoutteService;
 
-use App\Services\GuzzleService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use PhpParser\Node\Stmt\While_;
+
 
 class SearchController extends Controller
 {
@@ -33,7 +27,7 @@ class SearchController extends Controller
 
         $sortBy=$request->orderBy;
         $searchAt=$request->option;
-        $data=Product::SearchDB($search, $sortBy, $searchAt);
+        /*$data=Product::SearchDB($search, $sortBy, $searchAt);
         switch ($sortBy) {
           case 1:
                 $data=collect($data)->sortBy('AmazonPrice')->toArray();
@@ -41,9 +35,9 @@ class SearchController extends Controller
           case 2:
                 $data=collect($data)->sortBy('AmazonPrice')->reverse()->toArray();
                 break;
-        }
-
-        return view('pages.sresult', compact('data'));
+        }*/
+        $this->dispatch(new UpdateIDfromYahooJob());
+        //return view('pages.sresult', compact('data'));
 
     }
 }

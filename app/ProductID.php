@@ -9,15 +9,24 @@ use Illuminate\Support\Facades\DB;
 class ProductID extends Model
 {
     //Update yahoo data
-    public static function updateYahooData($bananaId,$data)
+    public static function updateYahooData($bananaId,$link,$price)
     {
+
         DB::table("product_i_d_s")->where('BananaId',$bananaId)
-            ->update($data);
+            ->update([
+                'YahooLink'=>$link,
+                'YahooPrice'=>$price,
+                'YahooLinkWasUpdatedAt'=>Carbon::today()
+            ]);
     }
-    public static function updateRakutenData($bananaId,$data)
+    public static function updateRakutenData($bananaId,$link,$price)
     {
         DB::table("product_i_d_s")->where('BananaId',$bananaId)
-            ->update($data);
+            ->update([
+                'RakutenLink'=>$link,
+                'RakutenPrice'=>$price,
+                'RakutenLinkWasUpdatedAt'=>Carbon::today()
+            ]);
     }
 
 
@@ -60,18 +69,36 @@ class ProductID extends Model
             ->update(['AmazonPrice'=>$jan]);
     }
 
-    public static function GetListNotUpdatedYahooIems()
+    public static function GetListEmptyYahooItems()
     {
-        return DB::table('product_i_d_s')->where('YahooLinkWasUpdatedAt', '<', Carbon::now()->subWeek())
-            ->orwhereNull('YahooLinkWasUpdatedAt')
-            ->select('AmazonId', 'BananaId', 'JAN', 'AmazonPrice')->get()->toArray();
+        return DB::table('product_i_d_s')
+            ->join('products','product_i_d_s.BananaId','=', 'products.BananaId')
+            ->whereNotNull('products.ItemName')
+            #->where('YahooLinkWasUpdatedAt', '<', Carbon::now()->subWeek())
+            #->orwhereNull('YahooLinkWasUpdatedAt')
+            ->select('product_i_d_s.AmazonId', 'product_i_d_s.BananaId', 'product_i_d_s.JAN', 'product_i_d_s.AmazonPrice', 'products.ItemName', 'products.ImgSRC')
+            ->get()->toArray();
 
     }
-    public static function GetListNotUpdatedRakutenIems()
+    public static function GetListOutdatedYahooItems()
     {
-        return DB::table('product_i_d_s')->where('RakutenLinkWasUpdatedAt', '<', Carbon::now()->subWeek())
-            ->orwhereNull('RakutenLinkWasUpdatedAt')
-            ->select('AmazonId', 'BananaId', 'JAN')->get()->toArray();
+        return DB::table('product_i_d_s')
+            ->join('products','product_i_d_s.BananaId','=', 'products.BananaId')
+            ->whereNotNull('products.ItemName')
+            ->where('YahooLinkWasUpdatedAt', '<', Carbon::now()->subWeek())
+            ->whereNotNull('YahooLinkWasUpdatedAt')
+            ->select('product_i_d_s.AmazonId', 'product_i_d_s.BananaId', 'product_i_d_s.JAN', 'product_i_d_s.AmazonPrice', 'products.ItemName', 'products.ImgSRC')
+            ->get()->toArray();
+    }
 
+    public static function GetListEmptyRakutenIems()
+    {
+        return DB::table('product_i_d_s')
+            ->join('products','product_i_d_s.BananaId','=', 'products.BananaId')
+            ->whereNotNull('products.ItemName')
+            #->where('YahooLinkWasUpdatedAt', '<', Carbon::now()->subWeek())
+            #->orwhereNull('YahooLinkWasUpdatedAt')
+            ->select('product_i_d_s.AmazonId', 'product_i_d_s.BananaId', 'product_i_d_s.JAN', 'product_i_d_s.AmazonPrice', 'products.ItemName', 'products.ImgSRC')
+            ->get()->toArray();
     }
 }

@@ -12,11 +12,18 @@ class UpdateIDfromRakutenJob extends AbstractJob
         $this->debug("start");
 
         //get list not updated items
-        $itemList=ProductID::GetListNotUpdatedRakutenIems();
+        $itemList=ProductID::GetListEmptyRakutenIems();
 
         foreach ($itemList as $item) {
-            //dispatch(new UpdateIDSearchRakutenLink($item));
+            dispatch(new UpdateIDSearchRakutenLink($item));
         }
+
+        /*//get list of outdated items
+        $outdateditemList=ProductID::GetListOutdatedRakutenItems();
+        foreach ($outdateditemList as $item) {
+            dispatch(new UpdateIDSearchRakutenLink($item));
+        }*/
+
 
         //仕事終了をローグに登録
         $this->debug("finish");
