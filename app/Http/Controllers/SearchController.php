@@ -19,13 +19,27 @@ class SearchController extends Controller
         $sortBy=$request->orderBy;
         $searchAt=$request->option;
         $data=Product::SearchDB($search, $sortBy, $searchAt);
-        switch ($sortBy) {
-          case 1:
+        switch ($searchAt.$sortBy) {
+          case 'Amazon1':
                 $data=collect($data)->sortBy('AmazonPrice')->toArray();
                 break;
-          case 2:
+          case 'Amazon2':
                 $data=collect($data)->sortBy('AmazonPrice')->reverse()->toArray();
                 break;
+            case 'Rakuten1':
+                $data=collect($data)->sortBy('RakutenPrice')->toArray();
+                break;
+            case 'Rakuten2':
+                $data=collect($data)->sortBy('RakutenPrice')->reverse()->toArray();
+                break;
+            case 'Yahoo1':
+                $data=collect($data)->sortBy('YahooPrice')->toArray();
+                break;
+            case 'Yahoo2':
+                $data=collect($data)->sortBy('YahooPrice')->reverse()->toArray();
+                break;
+
+
         }
 
         return view('pages.sresult', compact('data'));
