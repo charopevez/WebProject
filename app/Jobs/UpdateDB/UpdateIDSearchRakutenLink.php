@@ -44,7 +44,9 @@ class UpdateIDSearchRakutenLink extends AbstractJob
             '['=>'',
             ']'=>'',
             ','=>'',
-            '、'=>' ');
+            '、'=>' ',
+            '  '=>' ',
+            '　'=>' ');
         $words=strtr($itemName, $filter);
         $keyWords=explode(" ",$words);
         $count=count($keyWords);
@@ -72,7 +74,7 @@ class UpdateIDSearchRakutenLink extends AbstractJob
             foreach ($indexes as $index) {
                 $requestString.=$keyWords[$index]."+";
             }
-            print $requestString[$i];
+            print $requestString."\n";
             $searchResult[$i]=GoutteService::searchRakutenByString(
                 $requestString,
                 0.5*$this->item->AmazonPrice,
