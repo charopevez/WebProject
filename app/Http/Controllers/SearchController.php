@@ -18,7 +18,7 @@ class SearchController extends Controller
 
         $sortBy=$request->orderBy;
         $searchAt=$request->option;
-        /*$data=Product::SearchDB($search, $sortBy, $searchAt);
+        $data=Product::SearchDB($search, $sortBy, $searchAt);
         switch ($sortBy) {
           case 1:
                 $data=collect($data)->sortBy('AmazonPrice')->toArray();
@@ -28,8 +28,8 @@ class SearchController extends Controller
                 break;
         }
 
-        return view('pages.sresult', compact('data'));*/
-        $this->dispatch(new UpdateIDfromRakutenJob());
+        return view('pages.sresult', compact('data'));
+        //$this->dispatch(new UpdateIDfromRakutenJob());
         /*$items=ProductID::GetItemWithLinkandPrice(0,1000);
         foreach ($items as $item){
             $price=array();
