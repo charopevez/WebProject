@@ -1,7 +1,7 @@
  <!-- Footer -->
  <footer class="footer text-center sticky-bottom">
     <div class="container">
-      <ul class="list-inline mb-2">
+     <!--  <ul class="list-inline mb-2">
         <li class="list-inline-item">
           <a class="social-link rounded-circle text-white mr-3" href="#">
             <i class="icon-social-facebook"></i>
@@ -17,7 +17,7 @@
             <i class="icon-social-github"></i>
           </a>
         </li>
-      </ul>
+      </ul> -->
       <p class="text-muted small mb-0">Copyright &copy; 2020 Banana Milkshake</p>
     </div>
   </footer>

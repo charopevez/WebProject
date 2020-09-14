@@ -2,7 +2,7 @@
 <div class="single-job mb-4 d-lg-flex justify-content-between">
 
     <div class="job-img align-self-center">
-        <img src="{{$itemDetails->ImgSRC}}" class="img-thumbnail" alt="{{$itemDetails->ItemName}}" style="width:60%">
+        <img src="{{$itemDetails->ImgSRC}}" class="img-thumbnail" alt="{{$itemDetails->ItemName}}" style="width:200px;height:200px">
     </div>
     
     <div class="job-text">
