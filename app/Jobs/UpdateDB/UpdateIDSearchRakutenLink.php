@@ -74,6 +74,7 @@ class UpdateIDSearchRakutenLink extends AbstractJob
             foreach ($indexes as $index) {
                 $requestString.=$keyWords[$index]."+";
             }
+            substr_replace($requestString, "", -1)
             print $requestString."\n";
             $searchResult[$i]=GoutteService::searchRakutenByString(
                 $requestString,
