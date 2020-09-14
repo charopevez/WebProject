@@ -37,7 +37,7 @@
                  @break
 
                  @default
-                 <h4>{{$itemDetails->Price}}</h4>
+                 <h4>{{$itemDetails->Price}} 　円</h4>
                  <a href="{{$itemDetails->Link}}" class="third-btn job-btn2">Link</a>
 
         @endswitch
