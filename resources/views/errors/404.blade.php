@@ -68,7 +68,7 @@
                 <p style="font-size:25px;"><a href="http://www.52banana.fun/"  class='back'>ホームページに戻る</a></p>
             </div>
 
-            <img src="{{ asset('/img/505.gif') }}" class="gif1">
+            <a href="http://www.52banana.fun/"  class='back'><img src="{{ asset('/img/505.gif') }}" class="gif1"></a>
         </div>
          <!-- Search Area Starts -->
         
