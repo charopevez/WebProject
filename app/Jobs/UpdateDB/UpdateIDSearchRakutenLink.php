@@ -50,7 +50,7 @@ class UpdateIDSearchRakutenLink extends AbstractJob
         $count=count($keyWords);
         $generatedIndexes=array();
         //get random indexes from keywords
-        for ($i=0; $i<min(min(intdiv($count, 2),$count-2), 5); $i++) {
+        for ($i=0; $i<min(min(intdiv($count, 2),$count-2), 3); $i++) {
             $requestString="";
             $flag=false;
             while (!$flag){
@@ -70,7 +70,7 @@ class UpdateIDSearchRakutenLink extends AbstractJob
                 }
             }
             foreach ($indexes as $index) {
-                $requestString.=$keyWords[$index]." ";
+                $requestString.=$keyWords[$index]."+";
             }
             print $requestString[$i];
             $searchResult[$i]=GoutteService::searchRakutenByString(
@@ -78,7 +78,7 @@ class UpdateIDSearchRakutenLink extends AbstractJob
                 0.5*$this->item->AmazonPrice,
                 3*$this->item->AmazonPrice,
                 1);
-            print_r($searchResult[$i]);
+
         }
         //combining same results from different requests
         //variable for result

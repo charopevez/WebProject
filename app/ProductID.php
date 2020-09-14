@@ -101,4 +101,18 @@ class ProductID extends Model
             ->select('product_i_d_s.AmazonId', 'product_i_d_s.BananaId', 'product_i_d_s.JAN', 'product_i_d_s.AmazonPrice', 'products.ItemName', 'products.ImgSRC')
             ->get()->toArray();
     }
+
+    public static function GetItemWithLinkandPrice($min, $max)
+    {
+        return DB::table('product_i_d_s')
+            ->select(['BananaId','AmazonLink','AmazonPrice','RakutenLink','RakutenPrice','YahooLink','YahooPrice'])
+            ->whereBetween('BananaId',[$min, $max])->get()->toArray();
+    }
+
+    public static function UpdatePriceAndLink($bananaId,$price, $link)
+    {
+        DB::table('product_i_d_s')->where('BananaId',$bananaId)
+            ->update(['Price'=>$price, 'Link'=>$link]);
+
+    }
 }

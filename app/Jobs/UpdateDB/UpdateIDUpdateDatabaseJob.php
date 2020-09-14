@@ -12,6 +12,7 @@ class UpdateIDUpdateDatabaseJob extends AbstractJob
         $this->debug("start");
 
 
+
         //仕事終了をローグに登録
         $this->debug("finish");
     }

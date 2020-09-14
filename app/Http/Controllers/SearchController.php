@@ -1,19 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
-use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
-use App\Jobs\UpdateDB\UpdateIDSearchRakutenLink;
-use App\Jobs\UpdateDB\UpdateIDSearchYahooLink;
+use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
+use App\Product;
 use App\ProductID;
-
-use App\Services\GoutteService;
-
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\While_;
-
-
 class SearchController extends Controller
 {
     //
@@ -35,9 +26,30 @@ class SearchController extends Controller
           case 2:
                 $data=collect($data)->sortBy('AmazonPrice')->reverse()->toArray();
                 break;
-        }*/
-        $this->dispatch(new UpdateIDfromYahooJob());
-        //return view('pages.sresult', compact('data'));
+        }
 
+        return view('pages.sresult', compact('data'));*/
+        $this->dispatch(new UpdateIDfromRakutenJob());
+        /*$items=ProductID::GetItemWithLinkandPrice(0,1000);
+        foreach ($items as $item){
+            $price=array();
+            if (!empty($item->AmazonPrice)) $price['Amazon']=$item->AmazonPrice;
+            if (!empty($item->YahooPrice)) $price['Yahoo']=$item->YahooPrice;
+            if (!empty($item->RakutenPrice)) $price['Rakuten']=$item->RakutenPrice;
+            $minPrice=array_keys($price, min($price));
+            switch ($minPrice[0]){
+                case 'Amazon':
+                    ProductID::UpdatePriceAndLink($item->BananaId,$item->AmazonPrice,$item->AmazonLink);
+                    break;
+                case 'Yahoo':
+                    ProductID::UpdatePriceAndLink($item->BananaId,$item->YahooPrice,$item->YahooLink);
+                    break;
+                case 'Rakuten':
+                    ProductID::UpdatePriceAndLink($item->BananaId,$item->RakutenPrice,$item->RakutenLink);
+                    break;
+
+            }
+        }*/
+        //dd($minPrice);
     }
 }
