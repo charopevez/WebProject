@@ -7,7 +7,8 @@
               {{request()->search}}
               <span>“ の検索結果 </span>
               {{count($data)}}
-              <span>”</span>
+              <span>件 </span>
+              
           </div>
       </div>
  </div>
