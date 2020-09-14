@@ -52,5 +52,9 @@ use Jenssegers\Agent\Agent as Agent;
     //second design
     Route::post('autocomplete','MobileSearchController@autocomplete')->name("hint");
 
+    Route::get('/404', function () {
+        return view('pages.404');
+    });
+
 
 
