@@ -6,7 +6,7 @@ use App\Product;
 use App\ProductID;
 use App\Services\GoutteService;
 
-class UpdateIDSearchYahooLink extends AbstractJob
+class UpdateIDSearchRakutenLink extends AbstractJob
 {
     protected $item;
 
@@ -44,13 +44,15 @@ class UpdateIDSearchYahooLink extends AbstractJob
             '['=>'',
             ']'=>'',
             ','=>'',
-            '、'=>' ');
+            '、'=>' ',
+            '  '=>' ',
+            '　'=>' ');
         $words=strtr($itemName, $filter);
         $keyWords=explode(" ",$words);
         $count=count($keyWords);
         $generatedIndexes=array();
         //get random indexes from keywords
-        for ($i=0; $i<min(min(intdiv($count, 2),$count-2), 5); $i++) {
+        for ($i=0; $i<min(min(intdiv($count, 2),$count-2), 3); $i++) {
             $requestString="";
             $flag=false;
             while (!$flag){
@@ -70,14 +72,15 @@ class UpdateIDSearchYahooLink extends AbstractJob
                 }
             }
             foreach ($indexes as $index) {
-                $requestString.=$keyWords[$index]." ";
+                $requestString.=$keyWords[$index]."+";
             }
-
-            $searchResult[$i]=GoutteService::searchYahooByString(
+            print $requestString."\n";
+            $searchResult[$i]=GoutteService::searchRakutenByString(
                 $requestString,
                 0.5*$this->item->AmazonPrice,
                 3*$this->item->AmazonPrice,
                 1);
+
         }
         //combining same results from different requests
         //variable for result
@@ -90,7 +93,7 @@ class UpdateIDSearchYahooLink extends AbstractJob
                 $matches=0;
                 $keywordWeight=0;
                 foreach ($keyWords as $key){
-                    if (strpos($record['YahooItemName'], $key)) {
+                    if (strpos($record['RakutenItemName'], $key)) {
                         switch ($keywordWeight){
                             case 0: $matches+=$count; break;
                             case 1: $matches+=intdiv($count, 2); break;
@@ -102,9 +105,9 @@ class UpdateIDSearchYahooLink extends AbstractJob
                 }
                 $record['matches']=$matches;
                 //check if item is in result
-                if (!in_array($record['YahooLink'], $links)){
+                if (!in_array($record['RakutenLink'], $links)){
                     //if not adding record to result
-                    array_push($links, $record['YahooLink']);
+                    array_push($links, $record['RakutenLink']);
                     array_push($combinedResult, $record);
                 }
 
@@ -117,15 +120,15 @@ class UpdateIDSearchYahooLink extends AbstractJob
         });
         //sort by price
         usort($combinedResult, function($a, $b) {
-            return $a['YahooPrice'] <=> $b['YahooPrice'];
+            return $a['RakutenPrice'] <=> $b['RakutenPrice'];
         });
         //add link to DB
-        ProductID::updateYahooData($this->item->BananaId,
-            $combinedResult[0]["YahooLink"],
-            $combinedResult[0]["YahooPrice"]
+        ProductID::updateRakutenData($this->item->BananaId,
+            $combinedResult[0]["RakutenLink"],
+            $combinedResult[0]["RakutenPrice"]
         );
         //Update pic
-        if(empty($this->item->ImgSRC)) Product::UpdateItemImgSRC($this->item->BananaId, $combinedResult[0]["YahooImageSrc"]);
+        if(empty($this->item->ImgSRC)) Product::UpdateItemImgSRC($this->item->BananaId, $combinedResult[0]["RakutenImageSrc"]);
 
 
         //仕事終了をローグに登録

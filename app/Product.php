@@ -90,6 +90,14 @@ class Product extends Model
         return $result;
     }
 
+    public static function UpdateItemImgSRC($bananaId, $imgSRC)
+    {
+        DB::table("products")->where('BananaId',$bananaId)
+            ->update([
+                'ImgSRC'=> $imgSRC
+            ]);
+    }
+
 
 }
 

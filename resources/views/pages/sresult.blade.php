@@ -3,8 +3,7 @@
     <div class="container">
       <div class="row">
           <div class="col-lg-12 text-center mt-5">
-              
-              <span>“ </span>
+             <span>“ </span>
               {{request()->search}}
               <span>“ の検索結果 </span>
               {{count($data)}}
@@ -21,7 +20,7 @@
           <div class="col-lg-12">
           @foreach($data as $itemDetails)
             @switch (request()->option)
-                  @case ('Amazon')   
+                  @case ('Amazon')
                   @if(!empty($itemDetails->AmazonPrice))
                   @include('includes.results')
                   @endif
@@ -43,10 +42,10 @@
                     @include('includes.results')
 
             @endswitch
-            
+
           @endforeach
           </div>
-        
+
         </div>
       <!-- <div class="more-job-btn mt-5 text-center">
           <a href="#" class="template-btn">more</a>
