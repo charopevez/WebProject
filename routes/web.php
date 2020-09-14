@@ -38,7 +38,7 @@ use Jenssegers\Agent\Agent as Agent;
         } */
         return  \App::call('\App\Http\Controllers\SearchController@search');
         })->name('search');
-        
+
 
     Route::get('/details', function () {
         return view('details');
@@ -46,7 +46,7 @@ use Jenssegers\Agent\Agent as Agent;
 
     //admin
     Route::get('/admin', 'AdminController@console');
-
+    
 
 
     //second design

@@ -1,22 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Category;
-use App\Jobs\UpdateDB\GetLotInfoJob;
-use App\Jobs\UpdateDB\SearchItemOnAmazonPageJob;
-use App\Jobs\UpdateDB\UpdateIDfromAmazonJob;
 use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
-use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
-use App\Jobs\UpdateDB\UpdateIDGetListWithoutJan;
-use App\Jobs\UpdateDB\UpdateIDMainJob;
 use App\Product;
 use App\ProductID;
-use App\Services\GoutteService;
-
-use App\Services\GuzzleService;
 use Illuminate\Http\Request;
-
 class SearchController extends Controller
 {
     //
@@ -27,7 +15,41 @@ class SearchController extends Controller
     //商品検索
     function search(Request $request){
         $search=$request->search;// $_get['search]
-      $data=Product::SearchDB("SSD");
-      return view('pages.sresult', compact('data'));
+
+        $sortBy=$request->orderBy;
+        $searchAt=$request->option;
+        $data=Product::SearchDB($search, $sortBy, $searchAt);
+        switch ($sortBy) {
+          case 1:
+                $data=collect($data)->sortBy('AmazonPrice')->toArray();
+                break;
+          case 2:
+                $data=collect($data)->sortBy('AmazonPrice')->reverse()->toArray();
+                break;
+        }
+
+        return view('pages.sresult', compact('data'));
+        //$this->dispatch(new UpdateIDfromRakutenJob());
+        /*$items=ProductID::GetItemWithLinkandPrice(0,1000);
+        foreach ($items as $item){
+            $price=array();
+            if (!empty($item->AmazonPrice)) $price['Amazon']=$item->AmazonPrice;
+            if (!empty($item->YahooPrice)) $price['Yahoo']=$item->YahooPrice;
+            if (!empty($item->RakutenPrice)) $price['Rakuten']=$item->RakutenPrice;
+            $minPrice=array_keys($price, min($price));
+            switch ($minPrice[0]){
+                case 'Amazon':
+                    ProductID::UpdatePriceAndLink($item->BananaId,$item->AmazonPrice,$item->AmazonLink);
+                    break;
+                case 'Yahoo':
+                    ProductID::UpdatePriceAndLink($item->BananaId,$item->YahooPrice,$item->YahooLink);
+                    break;
+                case 'Rakuten':
+                    ProductID::UpdatePriceAndLink($item->BananaId,$item->RakutenPrice,$item->RakutenLink);
+                    break;
+
+            }
+        }*/
+        //dd($minPrice);
     }
 }

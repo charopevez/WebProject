@@ -12,14 +12,17 @@ class UpdateIDfromYahooJob extends AbstractJob
         //仕事開始をローグに登録
         $this->debug("start");
 
-        //get list not updated items
-        $itemList=ProductID::GetListNotUpdatedYahooIems();
-        print_r($itemList);
-
-        foreach ($itemList as $item) {
+        //get list of new items
+        $newItemList=ProductID::GetListEmptyYahooItems();
+        foreach ($newItemList as $item) {
             dispatch(new UpdateIDSearchYahooLink($item));
         }
 
+        /*//get list of outdated items
+        $outdateditemList=ProductID::GetListOutdatedYahooItems();
+        foreach ($outdateditemList as $item) {
+            dispatch(new UpdateIDSearchYahooLink($item));
+        }*/
 
         //仕事終了をローグに登録
         $this->debug("finish");

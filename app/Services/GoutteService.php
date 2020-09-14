@@ -32,7 +32,7 @@ class GoutteService{
     {
         $searchResult=[];
         //prepare url
-        $uriTemplate = "https://shopping.yahoo.co.jp/search?p=%s&pf=%d&pt=%d&sc_i=shp_pc_search_prcrange_prng&b=%d";
+        $uriTemplate = "https://shopping.yahoo.co.jp/search?p=%s&pf=%d&pt=%d&sc_i=shp_pc_search_prcrange_prng&b=%d&X=2";
         for ($i=1; $i<=$pagecount; $i++) {
             $uri[$i] = sprintf($uriTemplate, $request, $min, $max, 1 + 30 * ($i - 1));
             //get page
@@ -90,7 +90,7 @@ class GoutteService{
     {
         $searchResult=[];
         //prepare url
-        $uriTemplate = "https://search.rakuten.co.jp/search/mall/%s/?max=%d&min=%d&p=%d";
+        $uriTemplate = "https://search.rakuten.co.jp/search/mall/%s/?max=%d&min=%d&p=%d&s=2";
         for ($i=1; $i<=$pagecount; $i++) {
             $uri[$i] = sprintf($uriTemplate, $request, $max, $min, $i);
             //get page

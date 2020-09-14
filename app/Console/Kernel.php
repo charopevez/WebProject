@@ -2,7 +2,8 @@
 
 namespace App\Console;
 
-use App\Jobs\UpdateID\UpdateIDMainJob;
+use App\Jobs\UpdateDB\GetLotInfoJob;
+use App\Jobs\UpdateDB\UpdateIDMainJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -26,7 +27,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new UpdateIDMainJob())->everyFiveMinutes();
+        $schedule->job(new UpdateIDMainJob(100000000), 'MainJob')->dailyAt("17:20");
+        $schedule->job(new GetLotInfoJob(), 'ItemsData')->hourly();
+
     }
 
     /**
