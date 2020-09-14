@@ -9,7 +9,7 @@
         <h4>{{$itemDetails->ItemName}}</h4>
         <ul class="mt-4">
         
-            <li><h5>Details : </h5></li>
+            <li><h5></h5></li>
         </ul>
     </div>
     
