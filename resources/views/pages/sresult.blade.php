@@ -17,6 +17,7 @@
 <section class="result-area section-padding">
   <div class="container">
       <div class="row">
+          {{ $data->links('includes.pagination') }}
           <div class="col-lg-12">
           @foreach($data as $itemDetails)
             @switch (request()->option)
@@ -45,7 +46,7 @@
 
           @endforeach
           </div>
-          {{$data->links()}}
+          {{ $data->links('includes.pagination') }}
         </div>
       <!-- <div class="more-job-btn mt-5 text-center">
           <a href="#" class="template-btn">more</a>

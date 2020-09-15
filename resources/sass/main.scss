@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -174,18 +175,100 @@ body {
 SearchBox
 ****************
 */
+input[type="checkbox"].img-checkbox {
+    display: none;
+    &:checked {
+        + {
+            label.img-checkbox-label {
+                border: 3px solid #337c04;
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+}
+.img-checkbox-label {
+    padding-left: 20px;
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.img-logo {
+    width: 32px;
+    height: 32px;
+    &:hover {
+        box-shadow: 0 0 2px 1px #337c04;
+    }
+}
+
 
 
 /*
 ****************
-Menu#1
+Pagination
 ****************
 */
+$border-color: #0a3304;
+$list-background-color: #337c04;
+$active-list-background-color: #ffb400;
+.custom-pagination {
+    position: relative;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 10px;
+    background-color: $list-background-color;
+    border-radius: 40px;
+    box-shadow: 0 5px 25px 0 $border-color;
+}
 
+.custom-pagination li {
+    display: inline-block;
+    list-style: none;
+}
+
+.custom-pagination li a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F6F792;
+    text-align: center;
+    text-decoration: none;
+    color: #252525;
+    border-radius: 4px;
+    margin: 5px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all .3s ease;
+}
+
+.custom-pagination li a:hover {
+    color: #000;
+    background-color: $active-list-background-color;
+}
+.custom-pagination li.active,li.focus, li.disabled {
+    color: #000;
+    background-color: $active-list-background-color;
+}
+.custom-pagination span {
+    color: #000;
+    background-color: $active-list-background-color;
+}
+
+
+
+.custom-pagination li:first-child {
+    border-radius: 40px 0 0 40px;
+}
+
+.custom-pagination li:last-child {
+    border-radius: 0 40px 40px 0;
+}
 
 /*
 ****************
-Menu#1
+Pagination
 ****************
 */
 
