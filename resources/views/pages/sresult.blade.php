@@ -8,7 +8,7 @@
               <span>“ の検索結果 </span>
               <!-- {{count($data)}}
               <span>件 </span> -->
-              
+
           </div>
       </div>
  </div>
@@ -45,7 +45,7 @@
 
           @endforeach
           </div>
-
+          {{$data->links()}}
         </div>
       <!-- <div class="more-job-btn mt-5 text-center">
           <a href="#" class="template-btn">more</a>

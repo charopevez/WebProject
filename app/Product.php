@@ -13,6 +13,9 @@ class Product extends Model
         'ItemName', 'BananaId'
     ];
 
+    const filter = array("Amazon", "Rakuten", "Yahoo");
+
+
     //get list of items in local DB by Category
     public static function getListIDbyCategory($CategoryId)
     {
@@ -85,8 +88,24 @@ class Product extends Model
         } */
         $query=DB::table('products')
             ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
-            ->where('ItemName',"like","%{$string}%");
-        $result=$query->get()->toArray();
+            ->where('ItemName',"like","%{$string}%")
+            ->select("products.*");
+        //setfilter
+        if ($searchMode=="All") {
+            $query=$query->addSelect("product_i_d_s.*");
+        } else {
+                $first=true;
+                $query=$query->addSelect("product_i_d_s.BananaId");
+                foreach (self::filter as $key){
+                    if (strpos($searchMode, $key)!==false) {
+                        if ($first) $query = $query->whereNotNull('product_i_d_s.' . $searchMode . 'Price');
+                        else $query = $query->orwhereNotNull('product_i_d_s.' . $searchMode . 'Price');
+                    }
+                    $query=$query->addSelect("product_i_d_s." . $searchMode . "Link","product_i_d_s." . $searchMode . "Price");
+                }
+
+        }
+        $result=$query->paginate(15);
         return $result;
     }
 

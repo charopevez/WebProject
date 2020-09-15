@@ -21,6 +21,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+    <!--- Custom-->
+    <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/sandBox.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+<!-- favicon -->
+<link rel="icon" href="{{ asset('/img/favicon.png') }}" type="image/gif" sizes="16x16">
+
   <!-- Styles -->
   <style>
     body {

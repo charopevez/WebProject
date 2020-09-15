@@ -26,7 +26,7 @@ use Jenssegers\Agent\Agent as Agent;
         } */
     });
 
-    Route::post('/search', function (){
+    Route::get('/search', function (){
         /* $agent=new Agent();
         if ($agent->isMobile()) {
             // you're a mobile device
@@ -46,13 +46,13 @@ use Jenssegers\Agent\Agent as Agent;
 
     //admin
     Route::get('/admin', 'AdminController@console');
-    
+
 
 
     //second design
     Route::post('autocomplete','MobileSearchController@autocomplete')->name("hint");
 
- 
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
+use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
 use App\Product;
 use App\ProductID;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class SearchController extends Controller
         $sortBy=$request->orderBy;
         $searchAt=$request->option;
         $data=Product::SearchDB($search, $sortBy, $searchAt);
+        /*dd($data);*/
         switch ($searchAt.$sortBy) {
           case 'Amazon1':
                 $data=collect($data)->sortBy('AmazonPrice')->toArray();
@@ -39,10 +41,8 @@ class SearchController extends Controller
                 $data=collect($data)->sortBy('YahooPrice')->reverse()->toArray();
                 break;
 
-
         }
-
-        return view('pages.sresult', compact('data'));
+        return view('pages.sresult', ['data' => $data]);
         //$this->dispatch(new UpdateIDfromRakutenJob());
         /*$items=ProductID::GetItemWithLinkandPrice(0,1000);
         foreach ($items as $item){
