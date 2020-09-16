@@ -29,4 +29,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
   <script src="http://hernansartorio.com/jquery-nice-select/js/jquery.nice-select.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.4/js/ion.rangeSlider.min.js"></script>
-  <script src="{{ asset('js/main.js') }}"></script>
+
+ <!-- Custom -->
+  <script type="text/javascript"src="{{ asset('js/app.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('/js/sandBox.js') }}"></script>

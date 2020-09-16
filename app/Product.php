@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Result;
+use function GuzzleHttp\Psr7\str;
 
 class Product extends Model
 {
@@ -79,7 +80,7 @@ class Product extends Model
         return DB::table('products')->where('BananaId', $bananaId)->get()->toArray();
     }
 
-    public static function SearchDB($string,$sortBy,$searchMode)
+    public static function SearchDBwith($string,$sortBy,$searchMode)
     {
         $result=[];
         /* $mode=10*$sortBy+$searchMode;
@@ -108,6 +109,37 @@ class Product extends Model
         $result=$query->paginate(15);
         return $result;
     }
+    public static function SearchDB($string)
+    {
+        $result=[];
+        /* $mode=10*$sortBy+$searchMode;
+        switch ($mode) {
+            case 0:
+        } */
+        $filter=array('【' => ' ',
+            '】' => ' ',
+            ' x '=>'x',
+            ' X '=>'x',
+            '['=>'',
+            ']'=>'',
+            ','=>'',
+            '、'=>' ');
+        $words=strtr($string, $filter);
+        $keywords=explode(" ", $words);
+        return DB::table('products')
+            ->join('product_i_d_s','product_i_d_s.BananaId','=', 'products.BananaId')
+            ->orWhere( function ($query) use ($keywords) {
+                foreach ($keywords as $key) {
+                    // Loop over the terms and do a search for each.
+                    $query->orWhere('products.Maker', 'like', '%' . $key . '%');
+                }
+            })
+                ->orWhere(function ($query) use ($keywords) {
+                    foreach ($keywords as $key) {
+                        $query->orWhere('products.ItemName', 'like', '%' . $key . '%');
+                    }
+                })->get();
+        }
 
     public static function UpdateItemImgSRC($bananaId, $imgSRC)
     {

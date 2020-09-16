@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,700);body {
   margin: 0;
   padding: 0;
+  background-color: #F3E400;
 }
 
 /*
@@ -191,8 +192,6 @@ Pagination
 */
 
 .custom-pagination {
-  position: relative;
-  left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
   margin: 0;
@@ -227,23 +226,66 @@ Pagination
   background-color: #ffb400;
 }
 
-.custom-pagination li.active,
-li.focus,
-li.disabled {
-  color: #000;
-  background-color: #ffb400;
-}
-
-.custom-pagination span {
-  color: #000;
-  background-color: #ffb400;
-}
-
 .custom-pagination li:first-child {
   border-radius: 40px 0 0 40px;
 }
 
+.custom-pagination li a.active {
+  color: #000;
+  background-color: #ffb400;
+}
+
 .custom-pagination li:last-child {
+  border-radius: 0 40px 40px 0;
+}
+
+.temp-pagination {
+  position: relative;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 10px;
+  background-color: #337c04;
+  border-radius: 40px;
+  box-shadow: 0 5px 25px 0 #0a3304;
+}
+
+.temp-pagination li {
+  display: inline-block;
+  list-style: none;
+}
+
+.temp-pagination li a {
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #F6F792;
+  text-align: center;
+  text-decoration: none;
+  color: #252525;
+  border-radius: 4px;
+  margin: 5px;
+  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.temp-pagination li a:hover {
+  color: #000;
+  background-color: #ffb400;
+}
+
+.temp-pagination li:first-child {
+  border-radius: 40px 0 0 40px;
+}
+
+.temp-pagination li a.active {
+  color: #000;
+  background-color: #ffb400;
+}
+
+.temp-pagination li:last-child {
   border-radius: 0 40px 40px 0;
 }
 
@@ -255,13 +297,92 @@ Pagination
 
 /*
 ****************
-Menu#2
+Result
 ****************
 */
 
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-showcase {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.img-container {
+  display: block;
+  position: relative;
+}
+
+.link-overlay {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link-overlay:hover {
+  color: #000;
+  background-color: #fff;
+  transition: all 0.75s ease-in-out;
+  text-decoration: none;
+}
+
+.site-filter {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+
+.site-filter:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.35s ease;
+}
+
+.site-filter-active {
+  text-decoration: underline;
+  transition: all 0.35s ease;
+}
+
+.site-filter-active::before {
+  content: "X ";
+  text-transform: none;
+  transition: all 0.35s ease;
+}
+
+.item {
+  display: none;
+}
+
+.show-item {
+  display: block;
+  transition: all 0.35s ease;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+.overlay:hover {
+  opacity: 1;
+}
+
 /*
 ****************
-Menu#2
+Result
 ****************
 */
 

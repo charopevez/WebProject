@@ -43,16 +43,6 @@
                       <button type="submit" class="template-btn">find banana</button>
                   </form>
               </div>
-              <div id="search_option">
-                  <input type="checkbox" id="option0" name="option0" value="All" class="img-checkbox">
-                  <label for="option0" class="img-checkbox-label"><img alt="all" src="{{asset('/img/logos/logo-all.png')}}" class="img-logo"></label>
-                  <input type="checkbox" id="option1" name="option1" value="Amazon" class="img-checkbox">
-                  <label for="option1" class="img-checkbox-label"><img alt="Amazon" src="{{asset('/img/logos/logo-amazon.png')}}" class="img-logo"></label>
-                  <input type="checkbox" id="option2" name="option2" value="Rakuten" class="img-checkbox">
-                  <label for="option2" class="img-checkbox-label"> <img alt="Rakuten" src="{{asset('/img/logos/logo-rakuten.png')}}" class="img-logo"></label>
-                  <input type="checkbox" id="option3" name="option3" value="Yahoo" class="img-checkbox">
-                  <label for="option3" class="img-checkbox-label"><img alt="Yahoo" src="{{asset('/img/logos/logo-yahoo.png')}}" class="img-logo"></label>
-              </div>
           </div>
       </div>
   </div>

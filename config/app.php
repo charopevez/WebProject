@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
     ],
 
     /*
@@ -229,7 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
-
+        'JavaScript'=>Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
     ],
 
 ];

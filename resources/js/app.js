@@ -1,1 +1,1 @@
-require('./bootstrap');
+require('paginationjs/src/pagination')

@@ -343,9 +343,257 @@ searchBox.forEach(function (elm) {
 })(jQuery);
 /*Preloader*/
 
-/*Search on site directly*/
+/*filtering result*/
 
-/*Search on site directly*/
+/*variables*/
+
+
+var filtersActive = []; // an array to store the active filters
+
+var $filters = []; // for the filters
+
+var $sortBy = []; // for the filters
+
+var showAll = []; // identify the "show all" button
+
+var ascending;
+var cFilter, cFilterData; // declare a variable to store the filter and one for the data to filter by
+
+$(document).ready(function () {
+  //adding filter event
+  $filters = $('.site-filter'); // find the filters
+
+  showAll = $('.showAll'); // identify the "show all" button
+
+  $filters.click(function () {
+    // if filters are clicked
+    cFilter = $(this);
+    cFilterData = cFilter.attr('data-filter'); // read filter value
+
+    highlightFilter();
+    applyFilter();
+  }); //adding sorting event
+
+  $sortBy = $('.sortBy'); // find the filters
+
+  $sortBy.click(function () {
+    var parameter = $(this).attr('data-column'); // read sorting value
+
+    ascending = $(this).attr('data-order'); //get ascending value
+
+    console.log(ascending);
+    sortby('.sortable-items', parameter, ascending);
+    $(this).attr('data-order', ascending === 'asc' ? 'desc' : 'asc');
+    $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+  });
+  $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+  $(".custom-pagination").wrap("<div class='navbar-panel'></div>");
+  limitPages(); //add panel on top
+  //$(".navbar-panel").clone().prependTo("#searchResult");
+}); //controllers handle
+
+function highlightFilter() {
+  var filterClass = 'site-filter-active';
+
+  if (cFilter.hasClass(filterClass)) {
+    cFilter.removeClass(filterClass);
+    removeActiveFilter(cFilterData);
+  } else if (cFilter.hasClass('showAll')) {
+    $filters.removeClass(filterClass);
+    filtersActive = []; // clear the array
+
+    cFilter.addClass(filterClass);
+  } else {
+    showAll.removeClass(filterClass);
+    cFilter.addClass(filterClass);
+    filtersActive.push(cFilterData);
+  }
+}
+
+function applyFilter() {
+  var $works = $('.item'); // find the portfolio items
+  // go through all portfolio items and hide/show as necessary
+
+  $works.each(function () {
+    var i;
+    var classes = $(this).attr('class').split(' ');
+
+    if (cFilter.hasClass('showAll') || filtersActive.length === 0) {
+      // makes sure we catch the array when its empty and revert to the default of showing all items
+      $works.addClass('show-item'); //show them all
+    } else {
+      $(this).removeClass('show-item');
+
+      for (i = 0; i < classes.length; i++) {
+        if (filtersActive.indexOf(classes[i]) > -1) {
+          $(this).addClass('show-item');
+        }
+      }
+    }
+  });
+  $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+} // remove deselected filters from the ActiveFilter array
+
+
+function removeActiveFilter(item) {
+  var index = filtersActive.indexOf(item);
+
+  if (index > -1) {
+    filtersActive.splice(index, 1);
+  }
+}
+/*Filtering result*/
+
+/*Sorting result*/
+
+/**
+ *@param{HTMLDivElement} block in what sorting occures
+ *@param{data-tag} sort by tag value
+ *@param{asc} sorting order
+ *
+ */
+
+/*sortingbyvalue*/
+
+
+function sortby(block, value) {
+  var asc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'asc';
+  //find block for sorting
+  var $wrapper = $(block);
+  var items = $wrapper.find('.sorting-item'); //sort
+  //console.log(value);
+
+  items.sort(function (a, b) {
+    if ($(a).data(value) < $(b).data(value)) {
+      return asc === "asc" ? -1 : 1;
+    }
+
+    if ($(a).data(value) > $(b).data(value)) {
+      return asc === "asc" ? 1 : -1;
+    }
+
+    return 0;
+  }); //update
+
+  items.appendTo($wrapper);
+  $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+}
+/*Sorting result*/
+
+/*Pagination*/
+
+
+(function ($) {
+  var pagify = {
+    items: {},
+    container: null,
+    totalPages: 1,
+    perPage: 3,
+    currentPage: 0,
+    maxPages: 5,
+    createNavigation: function createNavigation() {
+      this.totalPages = Math.ceil(this.items.length / this.perPage);
+      $('.custom-pagination', this.container.parent()).remove();
+      var pagination = $('<ul class="custom-pagination"></ul>').append('<li class="hidden"><a class="nav prev disabled" data-next="false"><</a></li>');
+
+      for (var i = 0; i < this.totalPages; i++) {
+        var pageElClass = "page";
+        if (!i) pageElClass = "page active";
+        var pageEl = '<li><a class="' + pageElClass + '" data-page="' + (i + 1) + '">' + (i + 1) + "</a></li>";
+        pagination.append(pageEl);
+      }
+
+      pagination.append('<li><a class="nav next" data-next="true">></a></li>');
+      this.container.after(pagination);
+      var that = this;
+      $("body").off("click", ".nav");
+      this.navigator = $("body").on("click", ".nav", function () {
+        var el = $(this);
+        that.navigate(el.data("next"));
+      });
+      $("body").off("click", ".page");
+      this.pageNavigator = $("body").on("click", ".page", function () {
+        var el = $(this);
+        that.goToPage(el.data("page"));
+      });
+    },
+    navigate: function navigate(next) {
+      // default perPage to 5
+      if (isNaN(next) || next === undefined) {
+        next = true;
+      }
+
+      $(".custom-pagination .nav").removeClass("disabled");
+
+      if (next) {
+        this.currentPage++;
+        if (this.currentPage > this.totalPages - 1) this.currentPage = this.totalPages - 1;
+        if (this.currentPage == this.totalPages - 1) $(".custom-pagination .nav.next").addClass("disabled");
+      } else {
+        this.currentPage--;
+        if (this.currentPage < 0) this.currentPage = 0;
+        if (this.currentPage == 0) $(".custom-pagination .nav.prev").addClass("disabled");
+      }
+
+      this.showItems();
+    },
+    updateNavigation: function updateNavigation() {
+      var pages = $(".custom-pagination .page");
+      pages.removeClass("active");
+      $('.custom-pagination .page[data-page="' + (this.currentPage + 1) + '"]').addClass("active");
+    },
+    goToPage: function goToPage(page) {
+      this.currentPage = page - 1;
+      $(".custom-pagination .nav").removeClass("disabled");
+      if (this.currentPage == this.totalPages - 1) $(".custom-pagination .nav.next").addClass("disabled");
+      if (this.currentPage == 0) $(".custom-pagination .nav.prev").addClass("disabled");
+      this.showItems();
+    },
+    showItems: function showItems() {
+      this.items.hide();
+      var base = this.perPage * this.currentPage;
+      this.items.slice(base, base + this.perPage).show();
+      this.updateNavigation();
+    },
+    init: function init(container, items, perPage) {
+      this.container = container;
+      this.currentPage = 0;
+      this.totalPages = 1;
+      this.perPage = perPage;
+      this.items = items;
+      this.createNavigation();
+      this.showItems();
+    }
+  }; // stuff it all into a jQuery method!
+
+  $.fn.pagify = function (perPage, maxPages, itemSelector) {
+    var el = $(this);
+    var items = $(itemSelector, el); // default perPage to 5
+
+    if (isNaN(perPage) || perPage === undefined) {
+      perPage = 3;
+    } // don't fire if fewer items than perPage
+
+
+    if (items.length <= perPage) {
+      return true;
+    } //defalt maxPages
+
+
+    if (isNaN(maxPages) || maxPages === undefined) {
+      maxPages = 3;
+    }
+
+    pagify.init(el, items, perPage, maxPages);
+  };
+})(jQuery); //hide unnesasary buttons
+
+
+function limitPages() {
+  var pagesLinks = $('.custom-pagination').find('li');
+  console.log(pagesLinks);
+}
+/*Pagination*/
 
 /***/ }),
 
