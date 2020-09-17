@@ -402,6 +402,7 @@ Result
 }
 
 .product-name {
+  padding: 3%;
   display: inline-block;
   vertical-align: middle;
   width: 34%;
@@ -409,9 +410,10 @@ Result
 }
 
 .product-shop {
+  padding: 3%;
   display: inline-block;
   vertical-align: middle;
-  width: auto;
+  width: 20%;
   height: 100%;
 }
 

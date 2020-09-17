@@ -17,21 +17,21 @@
         @switch (request()->option)
                 @case ('Amazon')
                     @if(!empty($itemDetails->AmazonPrice))
-                        <h4>{{$itemDetails->AmazonPrice}}　円</h4>
+                        <h2>{{$itemDetails->AmazonPrice}}　円</h2>
                         <a href="{{$itemDetails->AmazonLink}}" class="third-btn job-btn2">Link</a>
                     @endif
                 @break
 
                 @case ('Rakuten')
                     @if(!empty($itemDetails->RakutenPrice))
-                        <h4>{{$itemDetails->RakutenPrice}}　円</h4>
+                        <h2>{{$itemDetails->RakutenPrice}}　円</h2>
                         <a href="{{$itemDetails->RakutenLink}}" class="third-btn job-btn2">Link</a>
                     @endif
                 @break
 
                 @case ('Yahoo')
                     @if(!empty($itemDetails->YahooPrice))
-                        <h4>{{$itemDetails->YahooPrice}}　円</h4>
+                        <h2>{{$itemDetails->YahooPrice}}　円</h2>
                         <a href="{{$itemDetails->YahooLink}}" class="third-btn job-btn2">Link</a>
                     @endif
                  @break

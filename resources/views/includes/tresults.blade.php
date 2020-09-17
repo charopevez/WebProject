@@ -23,20 +23,23 @@
     <div class="product-shop">
         @if(isset($itemDetails->AmazonPrice))
         <div class="item show-item Amazon">
-                {{$itemDetails->AmazonPrice}}円
+            <h4>{{$itemDetails->AmazonPrice}}円
                 <a href="{{$itemDetails->AmazonLink}}" target="_blank"><img id="AmazonLogo" alt="Amazon" src="{{asset('/img/logos/logo-amazon.png')}}" class="img-logo"></a>
+            </h4>
         </div>
         @endif
         @if(isset($itemDetails->RakutenPrice))
         <div class="item show-item Rakuten">
-            {{$itemDetails->RakutenPrice}}円
+            <h4>{{$itemDetails->RakutenPrice}}円
             <a href="{{$itemDetails->RakutenLink}}" target="_blank"><img id="RakutenLogo" alt="Rakuten" src="{{asset('/img/logos/logo-rakuten.png')}}" class="img-logo"></a>
+            </h4>
         </div>
         @endif
         @if(isset($itemDetails->YahooPrice))
         <div class="item show-item Yahoo">
-                {{$itemDetails->YahooPrice}}円
+            <h4>{{$itemDetails->YahooPrice}}円
                 <a href="{{$itemDetails->YahooLink}}" target="_blank"><img id="YahooLogo" alt="Yahoo" src="{{asset('/img/logos/logo-yahoo.png')}}" class="img-logo"></a>
+            </h4>
         </div>
         @endif
     </div>
