@@ -3,7 +3,7 @@
     <!-- Result Area Starts -->
     <section class="result-area">
         <!--test-->
-
+        @if($client==0)
         <div class="navbar-controller" id="filters">
             <button class="site-filter" data-filter="Amazon">Amazon</button>
             <button class="site-filter" data-filter="Rakuten">Rakuten</button>
@@ -21,7 +21,8 @@
         </div>
 
         <!--test-->
-        {{--<div class="container">
+        @else
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                 @foreach($data as $itemDetails)
@@ -55,7 +56,8 @@
             <!-- <div class="more-job-btn mt-5 text-center">
                 <a href="#" class="template-btn">more</a>
             </div> -->
-        </div>--}}
+        </div>
+            @endif
     </section>
     <!-- Jobs Area End -->
 @endsection

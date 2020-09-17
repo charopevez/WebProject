@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Jobs\UpdateDB\UpdateIDfromRakutenJob;
 use App\Jobs\UpdateDB\UpdateIDfromYahooJob;
 use App\Product;
-use JavaScript;
+use Jenssegers\Agent\Agent as Agent;
 use Illuminate\Http\Request;
 class SearchController extends Controller
 {
@@ -43,6 +43,15 @@ class SearchController extends Controller
                 break;
 
         }
-        return view('pages.sresult', ['data' => $data]);
+        $agent=new Agent();
+        if ($agent->isMobile()) {
+            // you're a mobile device
+            $client='1';
+            //'SearchController@search')->name('search');
+        } else {
+            // you're a desktop device, or something similar
+            $client='0';
+        }
+        return view('pages.sresult', ['data' => $data, 'client'=>$client]);
     }
 }
