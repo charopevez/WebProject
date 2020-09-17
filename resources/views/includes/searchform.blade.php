@@ -24,7 +24,7 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-12">
-              <form action="{{route('search')}}" method="get" class="d-md-flex justify-content-between">
+              <form action="{{route('search')}}" method="get" class="d-md-flex justify-content-between" id="search">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="text" name="search" placeholder="{{$data['search'] ?? " "}}" onfocus="this.placeholder = ''" value = "{{request()->search}}" required>
                       <select name = "orderBy">

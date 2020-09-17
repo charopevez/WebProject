@@ -497,16 +497,16 @@ function sortby(block, value) {
     createNavigation: function createNavigation() {
       this.totalPages = Math.ceil(this.items.length / this.perPage);
       $('.custom-pagination', this.container.parent()).remove();
-      var pagination = $('<ul class="custom-pagination"></ul>').append('<li id="prev"><a class="nav prev disabled" data-next="false"><</a></li>');
+      var pagination = $('<ul class="custom-pagination"></ul>').append('<li id="prev"><a class="nav prev disabled" data-next="false" href="#search"><</a></li>');
 
       for (var i = 0; i < this.totalPages; i++) {
         var pageElClass = "page";
         if (!i) pageElClass = "page active";
-        var pageEl = '<li><a class="' + pageElClass + '" data-page="' + (i + 1) + '">' + (i + 1) + "</a></li>";
+        var pageEl = '<li><a class="' + pageElClass + '" data-page="' + (i + 1) + '"  href="#search">' + (i + 1) + "</a></li>";
         pagination.append(pageEl);
       }
 
-      pagination.append('<li id="next"><a class="nav next" data-next="true">></a></li>');
+      pagination.append('<li id="next"><a class="nav next" href="#search" data-next="true">></a></li>');
       this.container.after(pagination);
       var that = this;
       $("body").off("click", ".nav");
