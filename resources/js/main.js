@@ -347,12 +347,16 @@ $(document).ready(function(){
         console.log(ascending);
         sortby('.sortable-items', parameter, ascending);
         $(this).attr('data-order', (ascending==='asc') ? 'desc' : 'asc');
-        $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+        if (ascending==='asc') $(this).addClass('data-order', 'desc').removeClass('data-order', 'asc');
+        else $(this).addClass('data-order', 'asc').removeClass('data-order', 'desc');
+
+        $(".sortable-items").pagify(9, 8, ".sorting-item.show-item");
+        limitPages(8);
 
     })
-    $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+    $(".sortable-items").pagify(9, 8, ".sorting-item.show-item");
     $(".custom-pagination").wrap("<div class='navbar-panel'></div>");
-    limitPages();
+    limitPages(8);
     //add panel on top
     //$(".navbar-panel").clone().prependTo("#searchResult");
 });
@@ -390,8 +394,8 @@ function applyFilter() {
             }
         }
     });
-    $(".sortable-items").pagify(10, 8,".sorting-item.show-item");
-
+    $(".sortable-items").pagify(9, 8,".sorting-item.show-item");
+    limitPages(8);
 }
 
 // remove deselected filters from the ActiveFilter array
@@ -432,7 +436,7 @@ function sortby(block, value, asc='asc') {
     });
         //update
     items.appendTo($wrapper);
-    $(".sortable-items").pagify(10, 8, ".sorting-item.show-item");
+    $(".sortable-items").pagify(9, 8, ".sorting-item.show-item");
 }
 /*Sorting result*/
 /*Pagination*/
@@ -449,7 +453,7 @@ function sortby(block, value, asc='asc') {
             this.totalPages = Math.ceil(this.items.length / this.perPage);
 
             $('.custom-pagination', this.container.parent()).remove();
-            var pagination = $('<ul class="custom-pagination"></ul>').append('<li class="hidden"><a class="nav prev disabled" data-next="false"><</a></li>');
+            var pagination = $('<ul class="custom-pagination"></ul>').append('<li id="prev"><a class="nav prev disabled" data-next="false"><</a></li>');
 
             for (var i = 0; i < this.totalPages; i++) {
                 var pageElClass = "page";
@@ -460,7 +464,7 @@ function sortby(block, value, asc='asc') {
                     i + 1) + "</a></li>";
                 pagination.append(pageEl);
             }
-            pagination.append('<li><a class="nav next" data-next="true">></a></li>');
+            pagination.append('<li id="next"><a class="nav next" data-next="true">></a></li>');
 
             this.container.after(pagination);
             var that = this;
@@ -506,6 +510,7 @@ function sortby(block, value, asc='asc') {
             pages.removeClass("active");
             $('.custom-pagination .page[data-page="' + (
                 this.currentPage + 1) + '"]').addClass("active");
+            limitPages(8)
         },
         goToPage: function(page) {
 
@@ -562,10 +567,21 @@ function sortby(block, value, asc='asc') {
 })(jQuery);
 
 //hide unnesasary buttons
-function limitPages() {
+function limitPages(max) {
     var pagesLinks=$('.custom-pagination').find('li');
-    console.log(pagesLinks)
-
+    var active=$('.active').data('page');
+    console.log(active)
+    if (pagesLinks.length-max>0&&max>5) {
+        console.log(active);
+        for (var i = 0; i < pagesLinks.length; i++) {
+            if (i === 0 || i === 1 || i === pagesLinks.length - 1 || i === pagesLinks.length-2 || i === active - 2
+                || i === active - 1 || i === active||i === active + 2|| i === active + 1) {
+                pagesLinks[i].className = "visible";
+            } else {
+                pagesLinks[i].className = "invisible";
+            }
+        }
+    }
 
 }
 

@@ -192,6 +192,9 @@ Pagination
 */
 
 .custom-pagination {
+  float: left;
+  position: relative;
+  left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
   margin: 0;
@@ -204,6 +207,10 @@ Pagination
 .custom-pagination li {
   display: inline-block;
   list-style: none;
+}
+
+.custom-pagination li.invisible {
+  display: none;
 }
 
 .custom-pagination li a {
@@ -301,55 +308,39 @@ Result
 ****************
 */
 
-.img-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.img-showcase {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.img-container {
-  display: block;
-  position: relative;
-}
-
-.link-overlay {
-  color: #fff;
-  text-decoration: none;
-}
-
-.link-overlay:hover {
-  color: #000;
-  background-color: #fff;
-  transition: all 0.75s ease-in-out;
-  text-decoration: none;
-}
-
-.site-filter {
+.site-filter,
+.sortBy {
   display: inline-block;
   text-decoration: none;
   transition: all 0.35s ease;
+  background-color: #337c04;
+  box-shadow: 0 5px 0 #0a3304;
+  color: black;
+  padding: 1em 1.5em;
+  text-transform: uppercase;
 }
 
-.site-filter:hover {
+.site-filter:hover,
+.sortBy:hover {
   cursor: pointer;
-  text-decoration: underline;
+  box-shadow: inset;
+  background-color: #ffb400;
   transition: all 0.35s ease;
 }
 
-.site-filter-active {
-  text-decoration: underline;
+.site-filter-active,
+.sortBy.asc {
+  background-color: #ffb400;
   transition: all 0.35s ease;
+  box-shadow: inset;
+  top: 5px;
 }
 
-.site-filter-active::before {
-  content: "X ";
+.site-filter-active::before,
+.sortBy:hover {
+  background-color: #ffb400;
+  box-shadow: none;
+  top: 5px;
   text-transform: none;
   transition: all 0.35s ease;
 }
@@ -363,28 +354,66 @@ Result
   transition: all 0.35s ease;
 }
 
-.overlay {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  color: #fff;
-  transition: all 0.5s ease-in-out;
-}
-
-.overlay:hover {
-  opacity: 1;
-}
-
 /*
 ****************
 Result
 ****************
 */
+
+.navbar-controller {
+  width: 100%;
+  display: inline;
+}
+
+.result-area {
+  width: 80%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.sortable-items {
+  text-align: center;
+}
+
+.sorting-item {
+  margin-top: 2%;
+  border-radius: 25px;
+  border: 5px solid #ffb400;
+  background: #73AD21;
+  width: 100%;
+  height: 10%;
+}
+
+.product-img {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 3%;
+  width: 33%;
+  height: 90%;
+  background-color: transparent;
+  text-align: center;
+}
+
+.product-img img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 200px;
+  height: 200px;
+}
+
+.product-name {
+  display: inline-block;
+  vertical-align: middle;
+  width: 34%;
+  height: 100%;
+}
+
+.product-shop {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  height: 100%;
+}
 
 /*
 ****************

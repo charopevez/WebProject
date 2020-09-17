@@ -1,27 +1,14 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mt-5">
-                <span>“ </span>
-                {{request()->search}}
-                <span>“ の検索結果 </span>
-            <!-- {{count($data)}}
-                <span>件 </span> -->
-
-            </div>
-        </div>
-    </div>
-
     <!-- Result Area Starts -->
-    <section class="result-area section-padding">
+    <section class="result-area">
         <!--test-->
 
         <div class="navbar-controller" id="filters">
-            <span class="site-filter" data-filter="Amazon">Amazon</span>
-            <span class="site-filter" data-filter="Rakuten">Rakuten</span>
-            <span class="site-filter" data-filter="Yahoo">Yahoo</span>
-            <span class="site-filter showAll" data-filter="all">All Projects</span>
+            <button class="site-filter" data-filter="Amazon">Amazon</button>
+            <button class="site-filter" data-filter="Rakuten">Rakuten</button>
+            <button class="site-filter" data-filter="Yahoo">Yahoo</button>
+            <button class="site-filter showAll" data-filter="all">All Projects</button>
             <button class="sortBy" data-column="amazon-price" data-order="asc">Amazon</button>
             <button class="sortBy" data-column="rakuten-price" data-order="asc">Rakuten</button>
             <button class="sortBy" data-column="yahoo-price" data-order="asc">Yahoo</button>
