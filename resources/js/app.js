@@ -1,1 +1,1 @@
-require('paginationjs/src/pagination')
+
