@@ -44,27 +44,5 @@ class SearchController extends Controller
 
         }
         return view('pages.sresult', ['data' => $data]);
-        //$this->dispatch(new UpdateIDfromRakutenJob());
-        /*$items=ProductID::GetItemWithLinkandPrice(0,1000);
-        foreach ($items as $item){
-            $price=array();
-            if (!empty($item->AmazonPrice)) $price['Amazon']=$item->AmazonPrice;
-            if (!empty($item->YahooPrice)) $price['Yahoo']=$item->YahooPrice;
-            if (!empty($item->RakutenPrice)) $price['Rakuten']=$item->RakutenPrice;
-            $minPrice=array_keys($price, min($price));
-            switch ($minPrice[0]){
-                case 'Amazon':
-                    ProductID::UpdatePriceAndLink($item->BananaId,$item->AmazonPrice,$item->AmazonLink);
-                    break;
-                case 'Yahoo':
-                    ProductID::UpdatePriceAndLink($item->BananaId,$item->YahooPrice,$item->YahooLink);
-                    break;
-                case 'Rakuten':
-                    ProductID::UpdatePriceAndLink($item->BananaId,$item->RakutenPrice,$item->RakutenLink);
-                    break;
-
-            }
-        }*/
-        //dd($minPrice);
     }
 }
